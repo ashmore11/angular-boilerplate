@@ -8,7 +8,7 @@ production  = process.env.NODE_ENV is 'production'
 
 exports.paths =
 	source      : [ './src/jade/**/*.jade', '!./src/jade/mixins/**' ]
-	watch       : './src/jade/**/*.jade'
+	watch       : 'src/jade/**/*.jade'
 	destination : './public/templates'
 
 gulp.task 'templates', ->

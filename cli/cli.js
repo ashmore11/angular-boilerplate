@@ -45,7 +45,7 @@
       this.view = view.toLowerCase();
       fs.open('src/coffee/controllers/' + this.view + '.coffee', 'w');
       fs.open('src/stylus/views/' + this.view + '.styl', 'w');
-      fs.open('src/jade/views' + this.view + '.jade', 'w');
+      fs.open('src/jade/views/' + this.view + '.jade', 'w');
       fs.readFile('cli/mvc/controller.coffee', (function(_this) {
         return function(err, data) {
           return fs.writeFile("src/coffee/controllers/" + _this.view + ".coffee", _this.generate_data(data));
@@ -53,11 +53,7 @@
       })(this));
       fs.writeFile("src/jade/views/" + this.view + ".jade", this.jade_data());
       fs.writeFile("src/stylus/views/" + this.view + ".styl", this.stylus_data());
-      fs.readFile('src/coffee/routes/routes.coffee', (function(_this) {
-        return function(err, data) {
-          return fs.appendFile('src/coffee/routes/routes.coffee', _this.route_data());
-        };
-      })(this));
+      fs.appendFile('src/coffee/routes/routes.coffee', this.route_data());
       return console.log('Generated ' + view + ' view');
     };
 
@@ -81,7 +77,8 @@
       this.view = view.toLowerCase();
       fs.unlink('src/coffee/controllers/' + this.view + '.coffee');
       fs.unlink('src/stylus/views/' + this.view + '.styl');
-      fs.unlink('src/jade/views' + this.view + '.jade');
+      fs.unlink('src/jade/views/' + this.view + '.jade');
+      fs.unlink('public/templates/views/' + this.view + '.html');
       fs.readFile('src/coffee/routes/routes.coffee', (function(_this) {
         return function(err, data) {
           data = data.toString().replace(_this.route_data(), '');

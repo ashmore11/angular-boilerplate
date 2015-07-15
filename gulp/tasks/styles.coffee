@@ -12,7 +12,7 @@ production  = process.env.NODE_ENV is 'production'
 
 exports.paths =
 	source      : './src/stylus/app.styl'
-	watch       : './src/stylus/**/*.styl'
+	watch       : 'src/stylus/**/*.styl'
 	destination : './public/css/'
 
 gulp.task 'styles', ->

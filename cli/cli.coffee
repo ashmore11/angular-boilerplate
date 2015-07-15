@@ -46,7 +46,7 @@ class CLI
 		# Generate files needed for the new View
 		fs.open 'src/coffee/controllers/' + @view + '.coffee', 'w'
 		fs.open 'src/stylus/views/'       + @view + '.styl'  , 'w'
-		fs.open 'src/jade/views'          + @view + '.jade'  , 'w'
+		fs.open 'src/jade/views/'         + @view + '.jade'  , 'w'
 
 		# Generate Model from mvc template
 		fs.readFile 'cli/mvc/controller.coffee', ( err, data ) =>
@@ -57,15 +57,9 @@ class CLI
 
 		# Generate Stylus from data below
 		fs.writeFile "src/stylus/views/#{@view}.styl", do @stylus_data
-
-		# Read the routes.xml file
-		fs.readFile 'src/coffee/routes/routes.coffee', ( err, data ) =>
-			
-			# # Write in the new data with removed line to the file
-			# fs.writeFile 'src/coffee/routes/routes.coffee', data
-			
-			# Append the new Route to the routes.xml file and reinsert the last line
-			fs.appendFile 'src/coffee/routes/routes.coffee', do @route_data
+	
+		# Append the new Route to the routes.coffee file
+		fs.appendFile 'src/coffee/routes/routes.coffee', do @route_data
 		
 		# Success Log
 		console.log 'Generated ' + view + ' view'
@@ -91,7 +85,8 @@ class CLI
 		# Delete all the files that match the View passed from the command line
 		fs.unlink 'src/coffee/controllers/' + @view + '.coffee'
 		fs.unlink 'src/stylus/views/'       + @view + '.styl'
-		fs.unlink 'src/jade/views'          + @view + '.jade'
+		fs.unlink 'src/jade/views/'         + @view + '.jade'
+		fs.unlink 'public/templates/views/' + @view + '.html'
 
 		# Read the data from the routes.coffee file
 		fs.readFile 'src/coffee/routes/routes.coffee', ( err, data ) =>
