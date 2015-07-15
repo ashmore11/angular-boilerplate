@@ -11,10 +11,10 @@ $base_path = str_replace( '/index.php', '', $base_path );
   <head>
 
     <!-- T I T L E -->
-    <title></title>
+    <title>Angular Boilerplate</title>
 
     <!-- C H A R S E T -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     
     <!-- V I E W P O R T -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@ $base_path = str_replace( '/index.php', '', $base_path );
     <header ng-include src="'templates/partials/header.html'" ng-controller="headerController"></header>
     
     <!-- C O N T E N T -->
-    <main ng-view class="{{ page }}"></main>
+    <main ng-view></main>
 
   </body>
 

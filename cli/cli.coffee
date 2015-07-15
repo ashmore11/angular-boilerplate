@@ -36,7 +36,7 @@ class CLI
 	###
 	GENERATE VIEW
 	###
-	generate_view: ( view ) ->
+	generateView: ( view ) ->
 
 		# Only continue if the views name is actually passed
 		unless view then return console.log 'Please give your view a name: app gen [view_name]'
@@ -50,21 +50,21 @@ class CLI
 
 		# Generate Model from mvc template
 		fs.readFile 'cli/mvc/controller.coffee', ( err, data ) =>
-			fs.writeFile "src/coffee/controllers/#{@view}.coffee", @generate_data data
+			fs.writeFile "src/coffee/controllers/#{@view}.coffee", @generateData data
 		
 		# Generate Jade from data below
-		fs.writeFile "src/jade/views/#{@view}.jade", do @jade_data
+		fs.writeFile "src/jade/views/#{@view}.jade", do @jadeData
 
 		# Generate Stylus from data below
-		fs.writeFile "src/stylus/views/#{@view}.styl", do @stylus_data
+		fs.writeFile "src/stylus/views/#{@view}.styl", do @stylusData
 	
 		# Append the new Route to the routes.coffee file
-		fs.appendFile 'src/coffee/routes/routes.coffee', do @route_data
+		fs.appendFile 'src/coffee/routes/routes.coffee', do @routeData
 		
 		# Success Log
 		console.log 'Generated ' + view + ' view'
 
-	generate_data: ( data ) =>
+	generateData: ( data ) =>
 		# Replace keyword in template with View name and capitalize
 		return data.toString().replace /<view>/g, @capitalize()
 
@@ -75,7 +75,7 @@ class CLI
 	###
 	DELETE VIEW
 	###
-	delete_view: ( view ) ->
+	deleteView: ( view ) ->
 
 		# Only continue if the views name is actually passed
 		unless view then return console.log 'Please pass the name of the view you wish to delete: app del [view_name]'
@@ -92,7 +92,7 @@ class CLI
 		fs.readFile 'src/coffee/routes/routes.coffee', ( err, data ) =>
 
 			# Get the Route that matches the given View and remove it from the file
-			data = data.toString().replace @route_data(), ''
+			data = data.toString().replace @routeData(), ''
 			
 			fs.writeFile 'src/coffee/routes/routes.coffee', data
 
@@ -102,7 +102,7 @@ class CLI
 	###
 	TEMPLATES
 	###
-	route_data: ->
+	routeData: ->
 
 		data = "
 		\r\n
@@ -112,13 +112,13 @@ class CLI
 		"
 		return data
 
-	jade_data: ->
+	jadeData: ->
 
 		data = "##{@view}.page"
 
 		return data
 
-	stylus_data: ->
+	stylusData: ->
 
 		data = "##{@view}
 			\r\n	//
