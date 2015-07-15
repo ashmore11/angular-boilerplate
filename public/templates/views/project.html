@@ -1,0 +1,18 @@
+
+<div id="project" class="page">
+  <div layout="column" class="copy">
+    <h1 class="title">{{ data.title }}</h1>
+    <p class="description">{{ data.description }}</p>
+    <p class="tools">{{ data.tools }}</p>
+    <div ng-if="!data.link" class="status not-online">Status: Offline</div>
+    <div ng-if="data.link" class="status live">Status: Live - <a href="{{ data.link }}" target="_blank" class="external-link">Go to website</a></div>
+  </div>
+  <div ng-if="data.video" class="video">
+    <video controls="controls" poster="images/_tmp/transparent.png" style="background-image: url('{{ data.assets[0].src }}');">
+      <source ng-src="{{ data.video }}" type="video/mp4"/>
+    </video>
+  </div>
+  <div images-loaded="images-loaded" use-progress-events="yes" class="images">
+    <div ng-repeat="image in data.assets" ng-if="$index &gt; 0" class="image"><img ng-src="{{ image.src }}"/></div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+#loader
+	
+	.loader
+		z-index: 10001
+		
+		absolute-fullscreen()
+		bg-color($black)
+		
+	.spinner
+		z-index   : 10002
+		absolute  : top 50% left 50%
+		transform : translate(-50%, -50%)
+		text-align: center
+		
+		.progress-bar
+			position  : relative
+			margin-top: 19px
+			
+			size(120px, 1px)
+			bg-color(#222)
+			
+			.line
+				display: block
+				width  : 0
+				height : 100%
+				
+				bg-color($white)
+				transition-style()

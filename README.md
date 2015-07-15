@@ -1,2 +1,19 @@
-# angular-boilerplate
-A boilerplate angular application with a simple command line interface
+# Hogan.com
+
+## Setup
+
+```
+make setup
+```
+
+## Development
+
+```
+make watch
+```
+
+## Release
+
+```
+make release
+```

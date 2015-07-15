@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "description": "A simple command-line tool for generating files",
+  "author": "Scott Ashmore",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "coffee-script": "^1.9.3",
+    "commander": "^2.8.1",
+    "shelljs": "^0.5.1"
+  },
+  "bin": {
+    "ngapp": "cli.js"
+  }
+}
