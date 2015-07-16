@@ -51,7 +51,7 @@
       fs.open('src/jade/views/' + this.view + '.jade', 'w');
       fs.readFile('cli/mvc/controller.coffee', (function(_this) {
         return function(err, data) {
-          return fs.writeFile("src/coffee/controllers/" + _this.view + ".coffee", _this.generateData(data));
+          return fs.writeFile("src/coffee/controllers/views/" + _this.view + ".coffee", _this.generateData(data));
         };
       })(this));
       fs.writeFile("src/jade/views/" + this.view + ".jade", this.jadeData());
@@ -86,7 +86,7 @@
       }
       this.view = view.toLowerCase();
       this.route = route.toLowerCase();
-      fs.unlink('src/coffee/controllers/' + this.view + '.coffee');
+      fs.unlink('src/coffee/controllers/views/' + this.view + '.coffee');
       fs.unlink('src/stylus/views/' + this.view + '.styl');
       fs.unlink('src/jade/views/' + this.view + '.jade');
       fs.unlink('public/templates/views/' + this.view + '.html');

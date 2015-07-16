@@ -8,17 +8,17 @@ class ImageLoader extends Service
 			img = new Image()
 
 			img.onload = =>
-				
+
 				dfd.resolve img
 
 			img.src = src
 
 			dfd
 
-		@loadSet = ( set ) ->
+		@loadSet = ( set ) =>
 
 			loaders = []
 
-			loaders.push ImageLoader.load( i ).promise() for i in set
+			loaders.push @load( i ).promise() for i in set
 
 			$.when.apply null, loaders

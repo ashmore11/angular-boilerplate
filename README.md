@@ -2,6 +2,8 @@
 
 Super simple Angular app using coffeescript, jade and stylus. Also has a easy to use CLI for generating new views. Everything is compiled using Gulp.
 
+Also using Jeet and Rupture to make media queries and grids easier.
+
 ## Setup
 
 ```
