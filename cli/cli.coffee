@@ -3,14 +3,17 @@ fs      = require 'fs'
 
 class CLI
 	
-	view : null
-	route: null
+	view  : null
+	route : null
+
+	paths :
+		coffee    : 'src/coffee/controllers/views/'
+		jade      : 'src/jade/views/'
+		stylus    : 'src/stylus/views/'
+		routes    : 'src/coffee/routes/routes.coffee'
+		templates : 'public/templates/views/'
 
 	constructor: ->
-
-		do @commands
-
-	commands: ->
 
 		program.version '0.1.1'
 
@@ -40,47 +43,55 @@ class CLI
 	generateView: ( view, route ) ->
 
 		# Only continue if the views name is actually passed
-		unless view and route then return console.log 'Please give your view a name and route: app gen [view_name] [route_name]'
+		unless view and route
+
+			return console.log 'Please give your view a name and route: app gen [view_name] [route_name]'
 		
 		@view  = view.toLowerCase()
 		@route = route.toLowerCase()
 
 		# Generate files needed for the new View
-		fs.open 'src/coffee/controllers/' + @view + '.coffee', 'w'
-		fs.open 'src/stylus/views/'       + @view + '.styl'  , 'w'
-		fs.open 'src/jade/views/'         + @view + '.jade'  , 'w'
+		fs.open @paths.coffee + "#{@view}.coffee", 'w'
+		fs.open @paths.stylus + "#{@view}.styl" ,  'w'
+		fs.open @paths.jade   + "#{@view}.jade" ,  'w'
 
 		# Generate Model from mvc template
 		fs.readFile 'cli/mvc/controller.coffee', ( err, data ) =>
-			fs.writeFile "src/coffee/controllers/views/#{@view}.coffee", @generateData data
+
+			fs.writeFile @paths.coffee + "#{@view}.coffee", @generateData data
 		
 		# Generate Jade from data below
-		fs.writeFile "src/jade/views/#{@view}.jade", do @jadeData
+		fs.writeFile @paths.jade + "#{@view}.jade", @jadeData()
 
 		# Generate Stylus from data below
-		fs.writeFile "src/stylus/views/#{@view}.styl", do @stylusData
+		fs.writeFile @paths.stylus + "#{@view}.styl", @stylusData()
 	
-		fs.readFile 'src/coffee/routes/routes.coffee', ( err, data ) =>
+		# Read the data from the routes.coffee file
+		fs.readFile @paths.routes, ( err, data ) =>
 
+			# Temporarily remove the 404 route
 			data = data.toString().replace @route404(), ''
 
 			# Write in the new data with removed 404 route
-			fs.writeFile 'src/coffee/routes/routes.coffee', data
+			fs.writeFile @paths.routes, data
 			
 			# Append the new route
-			fs.appendFile 'src/coffee/routes/routes.coffee', @routeData()
+			fs.appendFile @paths.routes, @routeData()
 
 			# Reinsert the removed 404 route
-			fs.appendFile 'src/coffee/routes/routes.coffee', @route404()
+			fs.appendFile @paths.routes, @route404()
 		
 		# Success Log
-		console.log 'Generated ' + view + ' view'
+		console.log "Generated #{@view} view"
+
 
 	generateData: ( data ) =>
+
 		# Replace keyword in template with View name and capitalize
 		return data.toString().replace /<view>/g, @capitalize()
 
 	capitalize: ->
+
 		# Make string capitalized because thats how ngclassify works...
 		return @view.charAt( 0 ).toUpperCase() + @view.slice( 1 )
 
@@ -90,27 +101,36 @@ class CLI
 	deleteView: ( view, route ) ->
 
 		# Only continue if the views name is actually passed
-		unless view and route then return console.log 'Please pass the name and route of the view you wish to delete: app del [view_name] [route_name]'
+		unless view and route
+
+			return console.log 'Please pass the name and route of the view you wish to delete: app del [view_name] [route_name]'
 			
 		@view  = view.toLowerCase()
 		@route = route.toLowerCase()
 
 		# Delete all the files that match the View passed from the command line
-		fs.unlink 'src/coffee/controllers/views/' + @view + '.coffee'
-		fs.unlink 'src/stylus/views/'             + @view + '.styl'
-		fs.unlink 'src/jade/views/'               + @view + '.jade'
-		fs.unlink 'public/templates/views/'       + @view + '.html'
+		fs.unlink @paths.coffee    + "#{@view}.coffee", ( err ) => @errorMessage( err ) if err
+		fs.unlink @paths.stylus    + "#{@view}.styl",   ( err ) => @errorMessage( err ) if err
+		fs.unlink @paths.jade      + "#{@view}.jade",   ( err ) => @errorMessage( err ) if err
+		fs.unlink @paths.templates + "#{@view}.html",   ( err ) => @errorMessage( err ) if err
 
 		# Read the data from the routes.coffee file
-		fs.readFile 'src/coffee/routes/routes.coffee', ( err, data ) =>
+		fs.readFile @paths.routes, ( err, data ) =>
 
 			# Get the route for the given view and remove it
 			data = data.toString().replace @routeData(), ''
 			
-			fs.writeFile 'src/coffee/routes/routes.coffee', data
+			fs.writeFile @paths.routes, data
 
 		# Success Log
-		console.log 'Deleted ' + @view + ' view'
+		console.log "Deleted #{@view} view"
+
+	###
+	ERROR MESSAGE
+	###
+	errorMessage: ( error ) ->
+
+		console.log "It looks like #{error.path} wasn't found..."
 
 	###
 	TEMPLATES
