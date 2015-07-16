@@ -10,5 +10,5 @@ gulp.task "build", [
 gulp.task "default", [
 	'build',
 	'watch',
-	'server'
+	'browser-sync'
 ]

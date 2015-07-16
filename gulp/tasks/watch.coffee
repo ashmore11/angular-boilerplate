@@ -1,5 +1,5 @@
-gulp       = require 'gulp'
-livereload = require 'gulp-livereload'
+gulp        = require 'gulp'
+browserSync = require 'browser-sync'
 
 paths =
 	scripts   : require('./scripts').paths
@@ -8,10 +8,8 @@ paths =
 
 gulp.task "watch", ->
 
-	livereload.listen()
-
-	gulp.watch paths.scripts.watch,   ['scripts']
-	gulp.watch paths.templates.watch, ['templates']
-	gulp.watch paths.styles.watch,    ['styles']
+	gulp.watch paths.scripts.watch,   [ 'scripts',   browserSync.reload ]
+	gulp.watch paths.templates.watch, [ 'templates', browserSync.reload ]
+	gulp.watch paths.styles.watch,    [ 'styles',    browserSync.reload ]
 
 	.emit 'update'

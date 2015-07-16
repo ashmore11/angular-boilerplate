@@ -8,7 +8,7 @@ development = process.env.NODE_ENV is 'development'
 production  = process.env.NODE_ENV is 'production'
 
 exports.paths =
-	source      : do mainBowerFiles
+	source      : mainBowerFiles()
 	destination : './public/js/'
 	filename    : 'vendor.js'
  

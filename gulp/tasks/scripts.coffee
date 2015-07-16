@@ -4,7 +4,6 @@ coffee      = require 'gulp-coffee'
 concat      = require 'gulp-concat'
 handleError = require '../util/handle_error'
 uglify      = require 'gulp-uglify'
-livereload  = require 'gulp-livereload'
 
 development = process.env.NODE_ENV is 'development'
 production  = process.env.NODE_ENV is 'production'
@@ -29,4 +28,3 @@ gulp.task 'scripts', ->
 		
 	scripts.pipe uglify() if production
 	scripts.pipe gulp.dest exports.paths.destination
-	scripts.pipe livereload() if development
