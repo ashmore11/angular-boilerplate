@@ -3,7 +3,8 @@ fs      = require 'fs'
 
 class CLI
 	
-	view: null
+	view : null
+	route: null
 
 	constructor: ->
 
@@ -15,15 +16,15 @@ class CLI
 
 		# Generate a new View & Route
 		program
-			.command( 'gen [view]' )
+			.command( 'gen [view] [route]' )
 			.description( 'Generate a new View & Route' )
-			.action ( view ) => @generate_view( view )
+			.action ( view, route ) => @generateView( view, route )
 
 		# Delete a specific View and Route
 		program
-			.command( 'del [view]' )
+			.command( 'del [view] [route]' )
 			.description( 'Delete an existing View & Route' )
-			.action ( view ) => @delete_view( view )
+			.action ( view, route ) => @deleteView( view, route )
 
 		# Fired if command is not recognized
 		program
@@ -36,12 +37,13 @@ class CLI
 	###
 	GENERATE VIEW
 	###
-	generateView: ( view ) ->
+	generateView: ( view, route ) ->
 
 		# Only continue if the views name is actually passed
 		unless view then return console.log 'Please give your view a name: app gen [view_name]'
 		
-		@view = view.toLowerCase()
+		@view  = view.toLowerCase()
+		@route = route.toLowerCase()
 
 		# Generate files needed for the new View
 		fs.open 'src/coffee/controllers/' + @view + '.coffee', 'w'
@@ -58,8 +60,18 @@ class CLI
 		# Generate Stylus from data below
 		fs.writeFile "src/stylus/views/#{@view}.styl", do @stylusData
 	
-		# Append the new Route to the routes.coffee file
-		fs.appendFile 'src/coffee/routes/routes.coffee', do @routeData
+		fs.readFile 'src/coffee/routes/routes.coffee', ( err, data ) =>
+
+			data = data.toString().replace @route404(), ''
+
+			# Write in the new data with removed 404 route
+			fs.writeFile 'src/coffee/routes/routes.coffee', data
+			
+			# Append the new route
+			fs.appendFile 'src/coffee/routes/routes.coffee', @routeData()
+
+			# Reinsert the removed 404 route
+			fs.appendFile 'src/coffee/routes/routes.coffee', @route404()
 		
 		# Success Log
 		console.log 'Generated ' + view + ' view'
@@ -75,12 +87,13 @@ class CLI
 	###
 	DELETE VIEW
 	###
-	deleteView: ( view ) ->
+	deleteView: ( view, route ) ->
 
 		# Only continue if the views name is actually passed
 		unless view then return console.log 'Please pass the name of the view you wish to delete: app del [view_name]'
 			
-		@view = view.toLowerCase()
+		@view  = view.toLowerCase()
+		@route = route.toLowerCase()
 
 		# Delete all the files that match the View passed from the command line
 		fs.unlink 'src/coffee/controllers/' + @view + '.coffee'
@@ -91,7 +104,7 @@ class CLI
 		# Read the data from the routes.coffee file
 		fs.readFile 'src/coffee/routes/routes.coffee', ( err, data ) =>
 
-			# Get the Route that matches the given View and remove it from the file
+			# Get the route for the given view and remove it
 			data = data.toString().replace @routeData(), ''
 			
 			fs.writeFile 'src/coffee/routes/routes.coffee', data
@@ -106,22 +119,35 @@ class CLI
 
 		data = "
 		\r\n
-		\r\n			.when '/#{@view}',
+		\r\n			.when '/#{@route}',
 		\r\n				templateUrl : 'templates/views/#{@view}.html'
 		\r\n				controller  : '#{@view}Controller'
 		"
 		return data
 
+	route404: ->
+
+		data = "
+		\r\n
+		\r\n			.otherwise
+		\r\n				templateUrl : 'templates/views/404.html'
+		\r\n				controller  : 'notFound404Controller'
+		"
+		return data
+
 	jadeData: ->
 
-		data = "##{@view}.page"
+		data = "##{@view}.page
+		\r\n
+		\r\n	h1 #{@view.toUpperCase()}
+		"
 
 		return data
 
 	stylusData: ->
 
 		data = "##{@view}
-			\r\n	//
+		\r\n	//
 		"
 
 		return data

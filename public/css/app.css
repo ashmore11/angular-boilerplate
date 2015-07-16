@@ -530,8 +530,26 @@ P A R T I A L S
 V I E W S
 ********************/
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/loader.styl */
+/* line 5 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/loader.styl */
 
-/* line 28 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/views/home.styl */
+/* line 28 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/views/404.styl */
+
+/* line 1 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/views/404.styl */
+
+/* line 3 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/views/404.styl */
+#notFound404 h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/views/404.styl */
+
+/* line 5 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/views/home.styl */
 
 /* line 1 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/views/home.styl */

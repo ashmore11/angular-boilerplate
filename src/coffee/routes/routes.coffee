@@ -6,10 +6,10 @@ class Routes extends Config
 
 		$routeProvider
 
-			.otherwise
-				templateUrl : 'templates/views/home.html'
-				controller  : 'homeController'
-
 			.when '/',
 				templateUrl : 'templates/views/home.html'
 				controller  : 'homeController'
+ 
+			.otherwise 
+				templateUrl : 'templates/views/404.html' 
+				controller  : 'notFound404Controller'

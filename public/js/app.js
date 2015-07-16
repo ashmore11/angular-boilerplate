@@ -24,6 +24,23 @@
 }).call(this);
 
 (function() {
+  var notFound404;
+
+  notFound404 = (function() {
+    function notFound404($scope) {
+      this.$scope = $scope;
+      this.$scope.controller = this;
+    }
+
+    return notFound404;
+
+  })();
+
+  angular.module('app').controller('notFound404Controller', ['$scope', notFound404]);
+
+}).call(this);
+
+(function() {
   var Header;
 
   Header = (function() {
@@ -81,12 +98,12 @@
   Routes = (function() {
     function Routes($locationProvider, $routeProvider) {
       $locationProvider.html5Mode(true);
-      $routeProvider.otherwise({
+      $routeProvider.when('/', {
         templateUrl: 'templates/views/home.html',
         controller: 'homeController'
-      }).when('/', {
-        templateUrl: 'templates/views/home.html',
-        controller: 'homeController'
+      }).otherwise({
+        templateUrl: 'templates/views/404.html',
+        controller: 'notFound404Controller'
       });
     }
 
