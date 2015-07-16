@@ -152,3 +152,123 @@
   angular.module('app').filter('reverse', [Reverse]);
 
 }).call(this);
+
+(function() {
+  var ImageLoader;
+
+  ImageLoader = (function() {
+    function ImageLoader() {
+      this.load = function(src) {
+        var dfd, img;
+        dfd = $.Deferred();
+        img = new Image();
+        img.onload = (function(_this) {
+          return function() {
+            return dfd.resolve(img);
+          };
+        })(this);
+        img.src = src;
+        return dfd;
+      };
+      this.loadSet = function(set) {
+        var i, j, len, loaders;
+        loaders = [];
+        for (j = 0, len = set.length; j < len; j++) {
+          i = set[j];
+          loaders.push(ImageLoader.load(i).promise());
+        }
+        return $.when.apply(null, loaders);
+      };
+    }
+
+    return ImageLoader;
+
+  })();
+
+  angular.module('app').service('imageLoaderService', [ImageLoader]);
+
+}).call(this);
+
+(function() {
+  var Sharer;
+
+  Sharer = (function() {
+    function Sharer() {
+      var genericUrl;
+      genericUrl = document.URL;
+      this.openWin = (function(_this) {
+        return function(url, w, h) {
+          var left, top;
+          left = (screen.availWidth - w) >> 1;
+          top = (screen.availHeight - h) >> 1;
+          return window.open(url, '', 'top=' + top + ',left=' + left + ',width=' + w + ',height=' + h + ',location=no,menubar=no');
+        };
+      })(this);
+      this.plus = (function(_this) {
+        return function(url) {
+          url = encodeURIComponent(url || genericUrl);
+          return _this.openWin("https://plus.google.com/share?url=" + url, 650, 385);
+        };
+      })(this);
+      this.pinterest = (function(_this) {
+        return function(url, media, descr) {
+          url = encodeURIComponent(url || genericUrl);
+          media = encodeURIComponent(media);
+          descr = encodeURIComponent(descr);
+          return _this.openWin("http://www.pinterest.com/pin/create/button/?url=" + url + "&media=" + media + "&description=" + descr, 735, 310);
+        };
+      })(this);
+      this.tumblr = (function(_this) {
+        return function(url, media, descr) {
+          url = encodeURIComponent(url || genericUrl);
+          media = encodeURIComponent(media);
+          descr = encodeURIComponent(descr);
+          return _this.openWin("http://www.tumblr.com/share/photo?source=" + media + "&caption=" + descr + "&click_thru=" + url, 450, 430);
+        };
+      })(this);
+      this.facebook = (function(_this) {
+        return function(url, copy) {
+          var decsr;
+          if (copy == null) {
+            copy = '';
+          }
+          url = encodeURIComponent(url || genericUrl);
+          decsr = encodeURIComponent(copy);
+          return _this.openWin("http://www.facebook.com/share.php?u=" + url + "&t=" + decsr, 600, 300);
+        };
+      })(this);
+      this.twitter = (function(_this) {
+        return function(url, copy) {
+          var descr;
+          if (copy == null) {
+            copy = '';
+          }
+          url = encodeURIComponent(url || genericUrl);
+          if (copy === '') {
+            copy = _this.__NAMESPACE__().locale.get('seo_twitter_card_description');
+          }
+          descr = encodeURIComponent(copy);
+          return _this.openWin("http://twitter.com/intent/tweet/?text=" + descr + "&url=" + url, 600, 300);
+        };
+      })(this);
+      this.renren = (function(_this) {
+        return function(url) {
+          url = encodeURIComponent(url || genericUrl);
+          return _this.openWin("http://share.renren.com/share/buttonshare.do?link=" + url, 600, 300);
+        };
+      })(this);
+      this.weibo = (function(_this) {
+        return function(url) {
+          url = encodeURIComponent(url || genericUrl);
+          return _this.openWin("http://service.weibo.com/share/share.php?url=" + url + "&language=zh_cn", 600, 300);
+        };
+      })(this);
+    }
+
+    return Sharer;
+
+  })();
+
+  angular.module('app').service('sharerService', [Sharer]);
+
+}).call(this);
