@@ -110,24 +110,6 @@
 }).call(this);
 
 (function() {
-  var Reverse;
-
-  Reverse = (function() {
-    function Reverse() {
-      return function($items) {
-        return $items.slice().reverse();
-      };
-    }
-
-    return Reverse;
-
-  })();
-
-  angular.module('app').filter('reverse', [Reverse]);
-
-}).call(this);
-
-(function() {
   var Routes;
 
   Routes = (function() {
@@ -150,5 +132,23 @@
   })();
 
   angular.module('app').config(['$locationProvider', '$routeProvider', Routes]);
+
+}).call(this);
+
+(function() {
+  var Reverse;
+
+  Reverse = (function() {
+    function Reverse() {
+      return function($items) {
+        return $items.slice().reverse();
+      };
+    }
+
+    return Reverse;
+
+  })();
+
+  angular.module('app').filter('reverse', [Reverse]);
 
 }).call(this);
