@@ -41,11 +41,46 @@
 }).call(this);
 
 (function() {
+  var Examplepage;
+
+  Examplepage = (function() {
+    function Examplepage($scope) {
+      this.$scope = $scope;
+      this.$scope.controller = this;
+    }
+
+    return Examplepage;
+
+  })();
+
+  angular.module('app').controller('examplepageController', ['$scope', Examplepage]);
+
+}).call(this);
+
+(function() {
+  var Footer;
+
+  Footer = (function() {
+    function Footer($scope) {
+      this.$scope = $scope;
+      this.$scope.controller = this;
+    }
+
+    return Footer;
+
+  })();
+
+  angular.module('app').controller('footerController', ['$scope', Footer]);
+
+}).call(this);
+
+(function() {
   var Header;
 
   Header = (function() {
-    function Header($scope) {
+    function Header($scope, $route) {
       this.$scope = $scope;
+      this.$route = $route;
       this.$scope.controller = this;
     }
 
@@ -53,7 +88,7 @@
 
   })();
 
-  angular.module('app').controller('headerController', ['$scope', Header]);
+  angular.module('app').controller('headerController', ['$scope', '$route', Header]);
 
 }).call(this);
 
@@ -101,6 +136,9 @@
       $routeProvider.when('/', {
         templateUrl: 'templates/views/home.html',
         controller: 'homeController'
+      }).when('/example-page', {
+        templateUrl: 'templates/views/examplepage.html',
+        controller: 'examplepageController'
       }).otherwise({
         templateUrl: 'templates/views/404.html',
         controller: 'notFound404Controller'

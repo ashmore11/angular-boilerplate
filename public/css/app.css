@@ -14,7 +14,7 @@ C O R E
 
 /* line 14 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/rupture/rupture/index.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/index.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/index.styl */
 
 /* line 10 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/index.styl */
 
@@ -34,7 +34,7 @@ C O R E
 
 /* line 90 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/flex.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/gradients.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/gradients.styl */
 
 /* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/gradients.styl */
 
@@ -50,7 +50,7 @@ C O R E
 
 /* line 19 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/image.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/normalize/index.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/normalize/index.styl */
 
 /* line 8 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/normalize/index.styl */
 
@@ -98,7 +98,7 @@ C O R E
 
 /* line 5 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/reset.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/text/index.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/text/index.styl */
 
 /* line 12 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/text/index.styl */
 
@@ -150,11 +150,11 @@ C O R E
 
 /* line 33 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/jeet/stylus/jeet/_grid.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/core/reset.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/core/reset.styl */
 
 /* line 14 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/core/reset.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/index.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/index.styl */
 
 /* line 10 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/index.styl */
 
@@ -174,7 +174,7 @@ C O R E
 
 /* line 90 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/flex.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/gradients.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/gradients.styl */
 
 /* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/gradients.styl */
 
@@ -190,7 +190,7 @@ C O R E
 
 /* line 19 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/image.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/normalize/index.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/normalize/index.styl */
 
 /* line 8 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/normalize/index.styl */
 
@@ -238,7 +238,7 @@ C O R E
 
 /* line 5 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/reset.styl */
 
-/* line 2 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/text/index.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/text/index.styl */
 
 /* line 12 : /Users/Scott/Desktop/work/angular-boilerplate/node_modules/nib/lib/nib/text/index.styl */
 
@@ -456,23 +456,50 @@ U T I L S
 P A R T I A L S
 ********************/
 
-/* line 7 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/utils/variables.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/utils/variables.styl */
 
-/* line 39 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/header.styl */
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/header.styl */
 
 /* line 1 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/header.styl */
 #header {
   position: absolute;
   top: 0;
   left: 0;
+  padding: 20px;
+  width: 100%;
+  z-index: 10000;
+  background-color: rgba(255,0,0,0.3);
+}
+
+/* line 8 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/header.styl */
+#header h1 {
+  margin-bottom: 5px;
+}
+
+/* line 11 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/header.styl */
+#header a {
+  display: block;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+/* line 7 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/header.styl */
+
+/* line 7 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/footer.styl */
+
+/* line 1 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/footer.styl */
+#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
   text-align: center;
   width: 100%;
   z-index: 10000;
-  background-color: #f00;
-  display: none;
+  background-color: rgba(0,0,255,0.3);
 }
 
-/* line 28 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/header.styl */
+/* line 28 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/footer.styl */
 
 /* line 7 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/partials/loader.styl */
 
@@ -525,7 +552,7 @@ P A R T I A L S
   transition: all 0.25s $ease-fn;
 }
 
-/* line 22 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/app.styl */
+/* line 23 : /Users/Scott/Desktop/work/angular-boilerplate/src/stylus/app.styl */
 /*******************
 V I E W S
 ********************/

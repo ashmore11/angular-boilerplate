@@ -37,10 +37,13 @@ $base_path = str_replace( '/index.php', '', $base_path );
   <body>
 
     <!-- H E A D E R -->
-    <header ng-include src="'templates/partials/header.html'" ng-controller="headerController"></header>
+    <div ng-include src="'templates/partials/header.html'" ng-controller="headerController"></div>
     
     <!-- C O N T E N T -->
-    <main ng-view></main>
+    <div ng-view></div>
+
+    <!-- F O O T E R -->
+    <div ng-include src="'templates/partials/footer.html'" ng-controller="footerController"></div>
 
   </body>
 
