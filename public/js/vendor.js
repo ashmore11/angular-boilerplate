@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.4.2
+ * @license AngularJS v1.4.3
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -57,7 +57,7 @@ function minErr(module, ErrorConstructor) {
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.4.2/' +
+    message += '\nhttp://errors.angularjs.org/1.4.3/' +
       (module ? module + '/' : '') + code;
 
     for (i = SKIP_INDEXES, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
@@ -2328,7 +2328,6 @@ function toDebugString(obj) {
   $$TestabilityProvider,
   $TimeoutProvider,
   $$RAFProvider,
-  $$AsyncCallbackProvider,
   $WindowProvider,
   $$jqLiteProvider,
   $$CookieReaderProvider
@@ -2350,11 +2349,11 @@ function toDebugString(obj) {
  * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
  */
 var version = {
-  full: '1.4.2',    // all of these placeholder strings will be replaced by grunt's
+  full: '1.4.3',    // all of these placeholder strings will be replaced by grunt's
   major: 1,    // package task
   minor: 4,
-  dot: 2,
-  codeName: 'nebular-readjustment'
+  dot: 3,
+  codeName: 'foam-acceleration'
 };
 
 
@@ -2489,7 +2488,6 @@ function publishExternalAPI(angular) {
         $timeout: $TimeoutProvider,
         $window: $WindowProvider,
         $$rAF: $$RAFProvider,
-        $$asyncCallback: $$AsyncCallbackProvider,
         $$jqLite: $$jqLiteProvider,
         $$HashMap: $$HashMapProvider,
         $$cookieReader: $$CookieReaderProvider
@@ -28363,9 +28361,9 @@ var minlengthDirective = function() {
 
 })(window, document);
 
-!window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
+!window.angular.$$csp() && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 /**
- * @license AngularJS v1.4.2
+ * @license AngularJS v1.4.3
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -28778,7 +28776,9 @@ function $RouteProvider() {
      * @name $route#$routeChangeSuccess
      * @eventType broadcast on root scope
      * @description
-     * Broadcasted after a route dependencies are resolved.
+     * Broadcasted after a route change has happened successfully.
+     * The `resolve` dependencies are now available in the `current.locals` property.
+     *
      * {@link ngRoute.directive:ngView ngView} listens for the directive
      * to instantiate the controller and render the view.
      *
@@ -29356,7 +29356,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 })(window, window.angular);
 
 /**
- * @license AngularJS v1.4.2
+ * @license AngularJS v1.4.3
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -29871,7 +29871,7 @@ var $$AnimateChildrenDirective = [function() {
  * to the element during the animation. Multiple events can be provided when spaces are used as a separator. (Note that this will not perform any DOM operation.)
  * * `easing` - The CSS easing value that will be applied to the transition or keyframe animation (or both).
  * * `transition` - The raw CSS transition style that will be used (e.g. `1s linear all`).
- * * `keyframe` - The raw CSS keyframe animation style that will be used (e.g. `1s my_animation linear`).
+ * * `keyframeStyle` - The raw CSS keyframe animation style that will be used (e.g. `1s my_animation linear`).
  * * `from` - The starting CSS styles (a key/value object) that will be applied at the start of the animation.
  * * `to` - The ending CSS styles (a key/value object) that will be applied across the animation via a CSS transition.
  * * `addClass` - A space separated list of CSS classes that will be added to the element and spread across the animation.
@@ -30182,6 +30182,10 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
 
     function init(element, options) {
       var node = getDomNode(element);
+      if (!node || !node.parentNode) {
+        return closeAndReturnNoopAnimator();
+      }
+
       options = prepareAnimationOptions(options);
 
       var temporaryStyles = [];
@@ -30241,10 +30245,14 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
       var fullClassName = classes + ' ' + setupClasses;
       var activeClasses = pendClasses(setupClasses, '-active');
       var hasToStyles = styles.to && Object.keys(styles.to).length > 0;
+      var containsKeyframeAnimation = (options.keyframeStyle || '').length > 0;
 
-      // there is no way we can trigger an animation since no styles and
-      // no classes are being applied which would then trigger a transition
-      if (!hasToStyles && !setupClasses) {
+      // there is no way we can trigger an animation if no styles and
+      // no classes are being applied which would then trigger a transition,
+      // unless there a is raw keyframe value that is applied to the element.
+      if (!containsKeyframeAnimation
+           && !hasToStyles
+           && !setupClasses) {
         return closeAndReturnNoopAnimator();
       }
 
@@ -30467,6 +30475,10 @@ var $AnimateCssProvider = ['$animateProvider', function($animateProvider) {
 
       function start() {
         if (animationClosed) return;
+        if (!node.parentNode) {
+          close();
+          return;
+        }
 
         var startTime, events = [];
 
@@ -32104,7 +32116,7 @@ var $$AnimationProvider = ['$animateProvider', function($animateProvider) {
                 ? (animationEntry.from.element || animationEntry.to.element)
                 : animationEntry.element;
 
-            if (getRunner(targetElement)) {
+            if (getRunner(targetElement) && getDomNode(targetElement).parentNode) {
               var operation = invokeFirstDriver(animationEntry);
               if (operation) {
                 startAnimationFn = operation.start;
@@ -33066,7 +33078,7 @@ angular.module('ngAnimate', [])
 })(window, window.angular);
 
 /**
- * @license AngularJS v1.4.2
+ * @license AngularJS v1.4.3
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -33460,7 +33472,7 @@ ngAriaModule.directive('ngShow', ['$aria', function($aria) {
 })(window, window.angular);
 
 /**
- * @license AngularJS v1.4.2
+ * @license AngularJS v1.4.3
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
