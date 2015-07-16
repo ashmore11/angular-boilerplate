@@ -1,4 +1,6 @@
-# Hogan.com
+# Angular Boilerplate
+
+Super simple Angular app using coffeescript, jade and stylus. Also has a easy to use CLI for generating new views. Everything is compiled using Gulp.
 
 ## Setup
 
