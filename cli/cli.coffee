@@ -4,17 +4,6 @@ viewDel    = require './tasks/view_deleter.js'
 serviceGen = require './tasks/service_generator.js'
 
 class CLI
-	
-	view  : null
-	route : null
-
-	paths :
-		templates : 'cli/templates/'
-		coffee    : 'src/coffee/controllers/views/'
-		jade      : 'src/jade/views/'
-		stylus    : 'src/stylus/views/'
-		routes    : 'src/coffee/routes/routes.coffee'
-		html      : 'public/templates/views/'
 
 	constructor: ->
 

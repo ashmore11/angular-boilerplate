@@ -11,19 +11,6 @@
   serviceGen = require('./tasks/service_generator.js');
 
   CLI = (function() {
-    CLI.prototype.view = null;
-
-    CLI.prototype.route = null;
-
-    CLI.prototype.paths = {
-      templates: 'cli/templates/',
-      coffee: 'src/coffee/controllers/views/',
-      jade: 'src/jade/views/',
-      stylus: 'src/stylus/views/',
-      routes: 'src/coffee/routes/routes.coffee',
-      html: 'public/templates/views/'
-    };
-
     function CLI() {
       program.version('0.1.1');
       program.command('gen-view [view] [route]').description('Generate a new View & Route').action((function(_this) {
