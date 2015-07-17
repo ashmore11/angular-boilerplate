@@ -24,8 +24,10 @@ make release
 
 ## Using the CLI
 
-To generate a new view just call 'ngapp gen' from your command line passing a name for the view and a name for the route of your new view
+To generate or delete a view just call 'ngapp gen-view', 'ngapp del-view' from your command line passing a name for the view and a name for the route of your new view
 
 ```
-ngapp gen [view name] [route name]
+ngapp gen-view [view name] [route name]
+
+ngapp del-view [view name] [route name]
 ```
