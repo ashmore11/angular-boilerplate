@@ -14,10 +14,6 @@ class Routes extends Config
 				templateUrl : 'templates/views/examplepage.html' 
 				controller  : 'examplepageController'
  
-			.when '/test', 
-				templateUrl : 'templates/views/del.html' 
-				controller  : 'delController'
- 
 			.otherwise 
 				templateUrl : 'templates/views/404.html' 
 				controller  : 'notFound404Controller'

@@ -1,3 +1,3 @@
-class <service> extends Service
+class <name> extends Service
 
 	constructor: () ->

@@ -1,4 +1,4 @@
-class <factory> extends Factory
+class <name> extends Factory
 
 	constructor: () ->
 

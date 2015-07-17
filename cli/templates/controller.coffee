@@ -1,4 +1,4 @@
-class <view> extends Controller
+class <name> extends Controller
 
 	constructor: ( @$scope ) ->
 
