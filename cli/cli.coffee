@@ -7,11 +7,12 @@ class CLI
 	route : null
 
 	paths :
+		templates : 'cli/templates/'
 		coffee    : 'src/coffee/controllers/views/'
 		jade      : 'src/jade/views/'
 		stylus    : 'src/stylus/views/'
 		routes    : 'src/coffee/routes/routes.coffee'
-		templates : 'public/templates/views/'
+		html      : 'public/templates/views/'
 
 	constructor: ->
 
@@ -19,13 +20,13 @@ class CLI
 
 		# Generate a new View & Route
 		program
-			.command( 'gen [view] [route]' )
+			.command( 'gen-view [view] [route]' )
 			.description( 'Generate a new View & Route' )
 			.action ( view, route ) => @generateView( view, route )
 
 		# Delete a specific View and Route
 		program
-			.command( 'del [view] [route]' )
+			.command( 'del-view [view] [route]' )
 			.description( 'Delete an existing View & Route' )
 			.action ( view, route ) => @deleteView( view, route )
 
@@ -56,7 +57,7 @@ class CLI
 		fs.open @paths.jade   + "#{@view}.jade" ,  'w'
 
 		# Generate Model from mvc template
-		fs.readFile 'cli/mvc/controller.coffee', ( err, data ) =>
+		fs.readFile @paths.templates + 'controller.coffee', ( err, data ) =>
 
 			fs.writeFile @paths.coffee + "#{@view}.coffee", @generateData data
 		
@@ -109,10 +110,10 @@ class CLI
 		@route = route.toLowerCase()
 
 		# Delete all the files that match the View passed from the command line
-		fs.unlink @paths.coffee    + "#{@view}.coffee", ( err ) => @errorMessage( err ) if err
-		fs.unlink @paths.stylus    + "#{@view}.styl",   ( err ) => @errorMessage( err ) if err
-		fs.unlink @paths.jade      + "#{@view}.jade",   ( err ) => @errorMessage( err ) if err
-		fs.unlink @paths.templates + "#{@view}.html",   ( err ) => @errorMessage( err ) if err
+		fs.unlink @paths.coffee + "#{@view}.coffee", ( err ) => @errorMessage( err ) if err
+		fs.unlink @paths.stylus + "#{@view}.styl",   ( err ) => @errorMessage( err ) if err
+		fs.unlink @paths.jade   + "#{@view}.jade",   ( err ) => @errorMessage( err ) if err
+		fs.unlink @paths.html   + "#{@view}.html",   ( err ) => @errorMessage( err ) if err
 
 		# Read the data from the routes.coffee file
 		fs.readFile @paths.routes, ( err, data ) =>

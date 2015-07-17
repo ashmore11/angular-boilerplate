@@ -13,22 +13,23 @@
     CLI.prototype.route = null;
 
     CLI.prototype.paths = {
+      templates: 'cli/templates/',
       coffee: 'src/coffee/controllers/views/',
       jade: 'src/jade/views/',
       stylus: 'src/stylus/views/',
       routes: 'src/coffee/routes/routes.coffee',
-      templates: 'public/templates/views/'
+      html: 'public/templates/views/'
     };
 
     function CLI() {
       this.generateData = bind(this.generateData, this);
       program.version('0.1.1');
-      program.command('gen [view] [route]').description('Generate a new View & Route').action((function(_this) {
+      program.command('gen-view [view] [route]').description('Generate a new View & Route').action((function(_this) {
         return function(view, route) {
           return _this.generateView(view, route);
         };
       })(this));
-      program.command('del [view] [route]').description('Delete an existing View & Route').action((function(_this) {
+      program.command('del-view [view] [route]').description('Delete an existing View & Route').action((function(_this) {
         return function(view, route) {
           return _this.deleteView(view, route);
         };
@@ -53,7 +54,7 @@
       fs.open(this.paths.coffee + (this.view + ".coffee"), 'w');
       fs.open(this.paths.stylus + (this.view + ".styl"), 'w');
       fs.open(this.paths.jade + (this.view + ".jade"), 'w');
-      fs.readFile('cli/mvc/controller.coffee', (function(_this) {
+      fs.readFile(this.paths.templates + 'controller.coffee', (function(_this) {
         return function(err, data) {
           return fs.writeFile(_this.paths.coffee + (_this.view + ".coffee"), _this.generateData(data));
         };
@@ -111,7 +112,7 @@
           }
         };
       })(this));
-      fs.unlink(this.paths.templates + (this.view + ".html"), (function(_this) {
+      fs.unlink(this.paths.html + (this.view + ".html"), (function(_this) {
         return function(err) {
           if (err) {
             return _this.errorMessage(err);

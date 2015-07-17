@@ -1,5 +1,5 @@
 class Header extends Controller
 
-	constructor: ( @$scope, @$route ) ->
+	constructor: ( @$scope, @HTTP ) ->
 
 		@$scope.controller = @

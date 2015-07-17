@@ -1,5 +1,5 @@
 {
-	"pages": {
+	"partials": {
 		"HEADER": {
 			"title": "Header",
 			"strings": {
@@ -11,7 +11,9 @@
 			"strings": {
 				"footer_desc": "I am the footer"
 			}
-		},
+		}
+	},
+	"pages": {
 		"HOME": {
 			"title": "Home page",
 			"strings": {

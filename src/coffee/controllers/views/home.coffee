@@ -4,8 +4,6 @@ class Home extends Controller
 
 		@$scope.controller = @
 
-		url = './json/data.json'
-
-		@HTTP.get( url ).then ( data ) =>
+		@HTTP.get( './json/data.json' ).then ( data ) =>
 
 			@$scope.data = data.pages.HOME
