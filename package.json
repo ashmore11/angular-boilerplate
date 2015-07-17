@@ -1,14 +1,14 @@
 {
-  "name": "portfolio",
+  "name": "angular-boilerplate",
   "version": "0.1.0",
-  "description": "Personal portfolio built using the Angular framework, taking advantage of Gulp, Coffeescript, Jade & Stylus.",
+  "description": "Super simple Angular app using coffeescript, jade and stylus.",
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:ashmore11/portfolio.git"
+    "url": "git@gitlab.com:ashmore11/angular-boilerplate.git"
   },
   "dependencies": {
     "bowser": "^0.7.2",

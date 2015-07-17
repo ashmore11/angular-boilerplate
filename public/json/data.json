@@ -1,0 +1,28 @@
+{
+	"pages": {
+		"HEADER": {
+			"title": "Header",
+			"strings": {
+				"header_desc": "I am the header"
+			}
+		},
+		"FOOTER": {
+			"title": "Footer",
+			"strings": {
+				"footer_desc": "I am the footer"
+			}
+		},
+		"HOME": {
+			"title": "Home page",
+			"strings": {
+				"home_desc": "I am the home page..."
+			}
+		},
+		"EXAMPLE_PAGE": {
+			"title": "Example page",
+			"strings": {
+				"example_desc": "I am the example page..."
+			}
+		}
+	}
+}
