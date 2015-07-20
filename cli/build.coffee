@@ -1,11 +1,11 @@
 shjs = require 'shelljs/global'
+fs   = require 'fs'
 
 commands = [
-	{ type: 'cli',      cmd: "coffee -c cli/cli.coffee" },
-	{ type: 'utils',    cmd: "coffee -o cli/tasks -c cli/tasks/coffee/utils.coffee" },
-	{ type: 'view_gen', cmd: "coffee -o cli/tasks -c cli/tasks/coffee/view_generator.coffee" },
-	{ type: 'view_del', cmd: "coffee -o cli/tasks -c cli/tasks/coffee/view_deleter.coffee" },
-	{ type: 'service',  cmd: "coffee -o cli/tasks -c cli/tasks/coffee/service_generator.coffee" }
+	{ type: 'cli',     cmd: "coffee -c cli/cli.coffee" },
+	{ type: 'utils',   cmd: "coffee -o cli/tasks -c cli/tasks/coffee/utils.coffee" },
+	{ type: 'mk_view', cmd: "coffee -o cli/tasks -c cli/tasks/coffee/mk_view.coffee" },
+	{ type: 'rm_view', cmd: "coffee -o cli/tasks -c cli/tasks/coffee/rm_view.coffee" }
 ]
 
 taskRunner = ( command, index ) ->

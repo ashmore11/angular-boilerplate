@@ -10,12 +10,12 @@
 
     Utils.prototype.paths = {
       templates: 'cli/templates/',
-      coffee: 'src/coffee/controllers/views/',
+      controller: 'src/coffee/controllers/views/',
+      service: 'src/coffee/services/',
       jade: 'src/jade/views/',
       stylus: 'src/stylus/views/',
       routes: 'src/coffee/routes/routes.coffee',
-      html: 'public/templates/views/',
-      services: 'src/coffee/services/'
+      html: 'public/templates/views/'
     };
 
     Utils.prototype.generateTemplate = function(name, data) {

@@ -1,13 +1,13 @@
 class Utils
 
 	paths :
-		templates : 'cli/templates/'
-		coffee    : 'src/coffee/controllers/views/'
-		jade      : 'src/jade/views/'
-		stylus    : 'src/stylus/views/'
-		routes    : 'src/coffee/routes/routes.coffee'
-		html      : 'public/templates/views/'
-		services  : 'src/coffee/services/'
+		templates  : 'cli/templates/'
+		controller : 'src/coffee/controllers/views/'
+		service    : 'src/coffee/services/'
+		jade       : 'src/jade/views/'
+		stylus     : 'src/stylus/views/'
+		routes     : 'src/coffee/routes/routes.coffee'
+		html       : 'public/templates/views/'
 
 	generateTemplate: ( name, data ) =>
 

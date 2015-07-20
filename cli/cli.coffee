@@ -1,7 +1,6 @@
-program    = require 'commander'
-viewGen    = require './tasks/view_generator.js'
-viewDel    = require './tasks/view_deleter.js'
-serviceGen = require './tasks/service_generator.js'
+program   = require 'commander'
+MkView    = require './tasks/mk_view'
+RmView    = require './tasks/rm_view'
 
 class CLI
 
@@ -11,21 +10,15 @@ class CLI
 
 		# Generate a new View & Route
 		program
-			.command( 'gen-view [name] [route]' )
+			.command( 'mk-view [name] [route]' )
 			.description( 'Generate a new View & Route' )
-			.action ( name, route ) => new viewGen( name, route )
+			.action ( name, route ) => new MkView( name, route )
 
 		# Delete a specific View and Route
 		program
-			.command( 'del-view [name] [route]' )
+			.command( 'rm-view [name] [route]' )
 			.description( 'Delete an existing View & Route' )
-			.action ( name, route ) => new viewDel( name, route )
-
-		# Generate a new Service or Factory
-		program
-			.command( 'gen-service [type] [name]' )
-			.description( 'Generate a new Service' )
-			.action ( type, name ) => new serviceGen( type, name )
+			.action ( name, route ) => new RmView( name, route )
 
 		# Fired if command is not recognized
 		program

@@ -12,6 +12,6 @@
     "shelljs": "^0.5.1"
   },
   "bin": {
-    "ngapp": "cli.js"
+    "app": "cli.js"
   }
 }

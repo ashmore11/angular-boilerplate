@@ -1,19 +1,16 @@
 fs    = require 'fs'
-utils = require './utils.js'
+utils = require './utils'
 
-class ViewGenerator
+module.exports = class MkView
 
-	constructor: ( name, route ) ->
+	constructor: ( @name, @route ) ->
 
 		message = 'Please give your view a name and route: app gen [view_name] [route_name]'
 
 		# Only continue if the views name and route exist
-		return console.log message unless name and route
+		return console.log message unless @name and @route
 
 		console.log 'Generating view...'
-		
-		@name  = name.toLowerCase()
-		@route = route.toLowerCase()
 
 		@generateFiles()
 		@populateFiles()
@@ -25,16 +22,16 @@ class ViewGenerator
 	generateFiles: ->
 
 		# Generate files needed for the new View
-		fs.open utils.paths.coffee + "#{@name}.coffee", 'w'
-		fs.open utils.paths.stylus + "#{@name}.styl" ,  'w'
-		fs.open utils.paths.jade   + "#{@name}.jade" ,  'w'
+		fs.open utils.paths.controller + "#{@name}.coffee", 'w'
+		fs.open utils.paths.stylus     + "#{@name}.styl" ,  'w'
+		fs.open utils.paths.jade       + "#{@name}.jade" ,  'w'
 
 	populateFiles: ->
 
 		# Generate controller from template
 		fs.readFile utils.paths.templates + 'controller.coffee', ( err, data ) =>
 
-			fs.writeFile utils.paths.coffee + "#{@name}.coffee", utils.generateTemplate( @name, data )
+			fs.writeFile utils.paths.controller + "#{@name}.coffee", utils.generateTemplate( @name, data )
 		
 		# Generate Jade from data below
 		fs.writeFile utils.paths.jade + "#{@name}.jade", utils.jadeData( @name )
@@ -58,5 +55,3 @@ class ViewGenerator
 
 			# Reinsert the removed 404 route
 			fs.appendFile utils.paths.routes, utils.route404()
-
-module.exports = ViewGenerator
