@@ -1,3 +1,7 @@
 #home.page
 
 	h1 {{ data.title }}
+
+	.images( ng-show="imagesLoaded" )
+
+		img.image( ng-repeat="image in data.assets" ng-src="{{ image.src }}" )

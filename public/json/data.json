@@ -18,7 +18,12 @@
 			"title": "Home page",
 			"strings": {
 				"home_desc": "I am the home page..."
-			}
+			},
+			"assets": [
+				{ "type": "image", "src": "images/placeholder_01.png" },
+				{ "type": "image", "src": "images/placeholder_02.png" },
+				{ "type": "image", "src": "images/placeholder_03.png" }
+			]
 		},
 		"EXAMPLE_PAGE": {
 			"title": "Example page",

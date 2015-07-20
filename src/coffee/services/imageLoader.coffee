@@ -1,6 +1,6 @@
 class ImageLoader extends Service
 
-	constructor: ->
+	constructor: ( $rootScope ) ->
 
 		@load = ( src ) ->
 
@@ -15,10 +15,19 @@ class ImageLoader extends Service
 
 			dfd
 
-		@loadSet = ( set ) =>
+		@loadSet = ( set, done ) =>
 
 			loaders = []
+			count   = 0
 
-			loaders.push @load( i ).promise() for i in set
+			for i in set
+				
+				loaders.push @load( i ).promise().done ->
+
+					count++
+
+					if count is set.length
+
+						done?()
 
 			$.when.apply null, loaders
