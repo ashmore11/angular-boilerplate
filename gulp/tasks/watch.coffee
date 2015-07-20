@@ -10,6 +10,6 @@ gulp.task "watch", ->
 
 	gulp.watch paths.scripts.watch,   [ 'scripts',   browserSync.reload ]
 	gulp.watch paths.templates.watch, [ 'templates', browserSync.reload ]
-	gulp.watch paths.styles.watch,    [ 'styles',    browserSync.reload ]
+	gulp.watch paths.styles.watch,    [ 'styles' ]
 
 	.emit 'update'

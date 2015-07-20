@@ -5,6 +5,7 @@ rupture     = require 'rupture'
 jeet        = require 'jeet'
 handleError = require '../util/handle_error'
 CSSmin      = require 'gulp-minify-css'
+browserSync = require 'browser-sync'
 
 development = process.env.NODE_ENV is 'development'
 production  = process.env.NODE_ENV is 'production'
@@ -27,5 +28,6 @@ gulp.task 'styles', ->
 
 		.on 'error', handleError
 
-	styles = styles.pipe CSSmin() if production
-	styles = styles.pipe gulp.dest exports.paths.destination
+	styles.pipe CSSmin() if production
+	styles.pipe gulp.dest exports.paths.destination
+	styles.pipe browserSync.stream() if development
