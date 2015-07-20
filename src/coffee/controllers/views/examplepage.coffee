@@ -1,5 +1,7 @@
 class Examplepage extends Controller
 
-	constructor: ( @$scope, @HTTP ) ->
+	constructor: ( @$scope ) ->
 
 		@$scope.controller = @
+
+		@$scope.$parent.pageTitle = 'Example page'

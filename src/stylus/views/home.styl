@@ -1,12 +1,27 @@
+/**
+
+Examples of some simple Jeet mixins.
+
+For more info visit: http://jeet.gs/
+
+**/
+
 #home
 	
 	h1
 		margin-bottom: 20px
 	
 	.images
+		cf()
+		transition: opacity 1s $ease-in-out-cubic
+		opacity: 1
+		
+		&.ng-hide
+			opacity: 0
 		
 		img
-			column(1/3, gutter: $gutter)
+			column(1/3, gutter: 2)
 			
 			+mobile()
 				stack(pad = 0)
+				margin-bottom: 10px
