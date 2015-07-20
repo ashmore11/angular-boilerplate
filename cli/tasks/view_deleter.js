@@ -7,14 +7,6 @@
   utils = require('./utils.js');
 
   ViewDeleter = (function() {
-    ViewDeleter.prototype.paths = {
-      coffee: 'src/coffee/controllers/views/',
-      jade: 'src/jade/views/',
-      stylus: 'src/stylus/views/',
-      routes: 'src/coffee/routes/routes.coffee',
-      html: 'public/templates/views/'
-    };
-
     function ViewDeleter(view, route) {
       var message;
       message = 'Please pass the name and route of the view you wish to delete: app del [view_name] [route_name]';
@@ -30,28 +22,28 @@
     }
 
     ViewDeleter.prototype.deleteFiles = function() {
-      fs.unlink(this.paths.coffee + (this.view + ".coffee"), (function(_this) {
+      fs.unlink(utils.paths.coffee + (this.view + ".coffee"), (function(_this) {
         return function(err) {
           if (err) {
             return _this.errorMessage(err);
           }
         };
       })(this));
-      fs.unlink(this.paths.jade + (this.view + ".jade"), (function(_this) {
+      fs.unlink(utils.paths.jade + (this.view + ".jade"), (function(_this) {
         return function(err) {
           if (err) {
             return _this.errorMessage(err);
           }
         };
       })(this));
-      fs.unlink(this.paths.stylus + (this.view + ".styl"), (function(_this) {
+      fs.unlink(utils.paths.stylus + (this.view + ".styl"), (function(_this) {
         return function(err) {
           if (err) {
             return _this.errorMessage(err);
           }
         };
       })(this));
-      return fs.unlink(this.paths.html + (this.view + ".html"), (function(_this) {
+      return fs.unlink(utils.paths.html + (this.view + ".html"), (function(_this) {
         return function(err) {
           if (err) {
             return _this.errorMessage(err);
@@ -61,10 +53,10 @@
     };
 
     ViewDeleter.prototype.deleteRoute = function() {
-      return fs.readFile(this.paths.routes, (function(_this) {
+      return fs.readFile(utils.paths.routes, (function(_this) {
         return function(err, data) {
-          data = data.toString().replace(utils.routeData(_this.view, _this.route), '');
-          return fs.writeFile(_this.paths.routes, data);
+          data = data.toString().replace(utils.routeTemplate(_this.view, _this.route), '');
+          return fs.writeFile(utils.paths.routes, data);
         };
       })(this));
     };

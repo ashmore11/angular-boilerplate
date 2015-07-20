@@ -1,6 +1,15 @@
 class Utils
 
-	generateData: ( name, data ) =>
+	paths :
+		templates : 'cli/templates/'
+		coffee    : 'src/coffee/controllers/views/'
+		jade      : 'src/jade/views/'
+		stylus    : 'src/stylus/views/'
+		routes    : 'src/coffee/routes/routes.coffee'
+		html      : 'public/templates/views/'
+		services  : 'src/coffee/services/'
+
+	generateTemplate: ( name, data ) =>
 
 		# Replace keyword in template with View name and capitalize
 		return data.toString().replace /<name>/g, @capitalize name
@@ -10,13 +19,13 @@ class Utils
 		# Make string capitalized because thats how ngclassify works...
 		return name.charAt( 0 ).toUpperCase() + name.slice( 1 )
 
-	routeData: ( view, route ) ->
+	routeTemplate: ( name, route ) ->
 
 		data = "
 		\r\n
 		\r\n			.when '/#{route}',
-		\r\n				templateUrl : 'templates/views/#{view}.html'
-		\r\n				controller  : '#{view}Controller'
+		\r\n				templateUrl : 'templates/views/#{name}.html'
+		\r\n				controller  : '#{name}Controller'
 		"
 		return data
 
@@ -30,18 +39,18 @@ class Utils
 		"
 		return data
 
-	jadeData: ( view ) ->
+	jadeData: ( name ) ->
 
-		data = "##{view}.page
+		data = "##{name}.page
 		\r\n
-		\r\n	h1 #{view.toUpperCase()}
+		\r\n	h1 #{name.toUpperCase()}
 		"
 
 		return data
 
-	stylusData: ( view ) ->
+	stylusData: ( name ) ->
 
-		data = "##{view}
+		data = "##{name}
 		\r\n	//
 		"
 

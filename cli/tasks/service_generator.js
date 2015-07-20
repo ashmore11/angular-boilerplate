@@ -7,18 +7,14 @@
   utils = require('./utils.js');
 
   ServiceGenerator = (function() {
-    ServiceGenerator.prototype.paths = {
-      templates: 'cli/templates/',
-      services: 'src/coffee/services/'
-    };
-
-    function ServiceGenerator(name) {
+    function ServiceGenerator(type, name) {
       var message;
-      message = 'Please give your service a name: ngapp gen [service_name]';
-      if (!name) {
+      message = 'Please give your service a type and name: ngapp gen-service [service_type] [service_name]';
+      if (!(type && name)) {
         return console.log(message);
       }
       console.log('Generating service...');
+      this.type = type.toLowerCase();
       this.name = name.toLowerCase();
       this.generateFile();
       this.populateFile();
@@ -26,13 +22,13 @@
     }
 
     ServiceGenerator.prototype.generateFile = function() {
-      return fs.open(this.paths.services + (this.name + ".coffee"), 'w');
+      return fs.open(utils.paths.services + (this.name + ".coffee"), 'w');
     };
 
     ServiceGenerator.prototype.populateFile = function() {
-      return fs.readFile(this.paths.templates + 'service.coffee', (function(_this) {
+      return fs.readFile(utils.paths.templates + (this.type + ".coffee"), (function(_this) {
         return function(err, data) {
-          return fs.writeFile(_this.paths.services + (_this.name + ".coffee"), utils.generateData(_this.name, data));
+          return fs.writeFile(utils.paths.services + (_this.name + ".coffee"), utils.generateTemplate(_this.name, data));
         };
       })(this));
     };

@@ -1,16 +1,16 @@
 shjs = require 'shelljs/global'
 
 commands = [
-	"coffee -c cli/cli.coffee",
-	"coffee -o cli/tasks -c cli/tasks/coffee/utils.coffee",
-	"coffee -o cli/tasks -c cli/tasks/coffee/view_generator.coffee",
-	"coffee -o cli/tasks -c cli/tasks/coffee/view_deleter.coffee",
-	"coffee -o cli/tasks -c cli/tasks/coffee/service_generator.coffee"
+	{ type: 'cli',      cmd: "coffee -c cli/cli.coffee" },
+	{ type: 'utils',    cmd: "coffee -o cli/tasks -c cli/tasks/coffee/utils.coffee" },
+	{ type: 'view_gen', cmd: "coffee -o cli/tasks -c cli/tasks/coffee/view_generator.coffee" },
+	{ type: 'view_del', cmd: "coffee -o cli/tasks -c cli/tasks/coffee/view_deleter.coffee" },
+	{ type: 'service',  cmd: "coffee -o cli/tasks -c cli/tasks/coffee/service_generator.coffee" }
 ]
 
 taskRunner = ( command, index ) ->
 
-	exec command, ( code ) ->
+	exec command.cmd, ( code ) ->
 
 		if code is 0
 
@@ -25,11 +25,11 @@ taskRunner = ( command, index ) ->
 
 			else
 
-				echo 'Success: build complete!'
+				echo "Success: #{command.type} build complete!"
 
 		else
 
-			echo 'Error: build failed...'
+			echo "Error: #{command.type} build failed..."
 			exit 1
 
 for command, index in commands

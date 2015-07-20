@@ -3,19 +3,16 @@ utils = require './utils.js'
 
 class ServiceGenerator
 
-	paths :
-		templates : 'cli/templates/'
-		services  : 'src/coffee/services/'
+	constructor: ( type, name ) ->
 
-	constructor: ( name ) ->
+		message = 'Please give your service a type and name: ngapp gen-service [service_type] [service_name]'
 
-		message = 'Please give your service a name: ngapp gen [service_name]'
-
-		# Only continue if the views name and route exist
-		return console.log message unless name
+		# Only continue if the services type and name exist
+		return console.log message unless type and name
 
 		console.log 'Generating service...'
 		
+		@type = type.toLowerCase()
 		@name = name.toLowerCase()
 
 		@generateFile()
@@ -27,13 +24,13 @@ class ServiceGenerator
 	generateFile: ->
 
 		# Generate files needed for the new View
-		fs.open @paths.services + "#{@name}.coffee", 'w'
+		fs.open utils.paths.services + "#{@name}.coffee", 'w'
 
 	populateFile: ->
 
 		# Generate controller from template
-		fs.readFile @paths.templates + 'service.coffee', ( err, data ) =>
+		fs.readFile utils.paths.templates + "#{@type}.coffee", ( err, data ) =>
 
-			fs.writeFile @paths.services + "#{@name}.coffee", utils.generateData( @name, data )
+			fs.writeFile utils.paths.services + "#{@name}.coffee", utils.generateTemplate( @name, data )
 
 module.exports = ServiceGenerator

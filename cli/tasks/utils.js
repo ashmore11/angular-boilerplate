@@ -5,10 +5,20 @@
 
   Utils = (function() {
     function Utils() {
-      this.generateData = bind(this.generateData, this);
+      this.generateTemplate = bind(this.generateTemplate, this);
     }
 
-    Utils.prototype.generateData = function(name, data) {
+    Utils.prototype.paths = {
+      templates: 'cli/templates/',
+      coffee: 'src/coffee/controllers/views/',
+      jade: 'src/jade/views/',
+      stylus: 'src/stylus/views/',
+      routes: 'src/coffee/routes/routes.coffee',
+      html: 'public/templates/views/',
+      services: 'src/coffee/services/'
+    };
+
+    Utils.prototype.generateTemplate = function(name, data) {
       return data.toString().replace(/<name>/g, this.capitalize(name));
     };
 
@@ -16,9 +26,9 @@
       return name.charAt(0).toUpperCase() + name.slice(1);
     };
 
-    Utils.prototype.routeData = function(view, route) {
+    Utils.prototype.routeTemplate = function(name, route) {
       var data;
-      data = "\r\n \r\n			.when '/" + route + "', \r\n				templateUrl : 'templates/views/" + view + ".html' \r\n				controller  : '" + view + "Controller'";
+      data = "\r\n \r\n			.when '/" + route + "', \r\n				templateUrl : 'templates/views/" + name + ".html' \r\n				controller  : '" + name + "Controller'";
       return data;
     };
 
@@ -28,15 +38,15 @@
       return data;
     };
 
-    Utils.prototype.jadeData = function(view) {
+    Utils.prototype.jadeData = function(name) {
       var data;
-      data = "#" + view + ".page \r\n \r\n	h1 " + (view.toUpperCase());
+      data = "#" + name + ".page \r\n \r\n	h1 " + (name.toUpperCase());
       return data;
     };
 
-    Utils.prototype.stylusData = function(view) {
+    Utils.prototype.stylusData = function(name) {
       var data;
-      data = "#" + view + " \r\n	//";
+      data = "#" + name + " \r\n	//";
       return data;
     };
 

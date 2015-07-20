@@ -7,52 +7,44 @@
   utils = require('./utils.js');
 
   ViewGenerator = (function() {
-    ViewGenerator.prototype.paths = {
-      templates: 'cli/templates/',
-      coffee: 'src/coffee/controllers/views/',
-      jade: 'src/jade/views/',
-      stylus: 'src/stylus/views/',
-      routes: 'src/coffee/routes/routes.coffee'
-    };
-
-    function ViewGenerator(view, route) {
+    function ViewGenerator(name, route) {
       var message;
       message = 'Please give your view a name and route: app gen [view_name] [route_name]';
-      if (!(view && route)) {
+      if (!(name && route)) {
         return console.log(message);
       }
       console.log('Generating view...');
-      this.view = view.toLowerCase();
+      this.name = name.toLowerCase();
       this.route = route.toLowerCase();
       this.generateFiles();
       this.populateFiles();
       this.generateRoute();
-      console.log("Generated view: [ " + this.view + " ]");
+      console.log("Generated view: [ " + this.name + " ]");
     }
 
     ViewGenerator.prototype.generateFiles = function() {
-      fs.open(this.paths.coffee + (this.view + ".coffee"), 'w');
-      fs.open(this.paths.stylus + (this.view + ".styl"), 'w');
-      return fs.open(this.paths.jade + (this.view + ".jade"), 'w');
+      fs.open(utils.paths.coffee + (this.name + ".coffee"), 'w');
+      fs.open(utils.paths.stylus + (this.name + ".styl"), 'w');
+      return fs.open(utils.paths.jade + (this.name + ".jade"), 'w');
     };
 
     ViewGenerator.prototype.populateFiles = function() {
-      fs.readFile(this.paths.templates + 'controller.coffee', (function(_this) {
+      fs.readFile(utils.paths.templates + 'controller.coffee', (function(_this) {
         return function(err, data) {
-          return fs.writeFile(_this.paths.coffee + (_this.view + ".coffee"), utils.generateData(_this.view, data));
+          return fs.writeFile(utils.paths.coffee + (_this.name + ".coffee"), utils.generateTemplate(_this.name, data));
         };
       })(this));
-      fs.writeFile(this.paths.jade + (this.view + ".jade"), utils.jadeData(this.view));
-      return fs.writeFile(this.paths.stylus + (this.view + ".styl"), utils.stylusData(this.view));
+      fs.writeFile(utils.paths.jade + (this.name + ".jade"), utils.jadeData(this.name));
+      return fs.writeFile(utils.paths.stylus + (this.name + ".styl"), utils.stylusData(this.name));
     };
 
     ViewGenerator.prototype.generateRoute = function() {
-      return fs.readFile(this.paths.routes, (function(_this) {
+      return fs.readFile(utils.paths.routes, (function(_this) {
         return function(err, data) {
           data = data.toString().replace(utils.route404(), '');
-          fs.writeFile(_this.paths.routes, data);
-          fs.appendFile(_this.paths.routes, utils.routeData(_this.view, _this.route));
-          return fs.appendFile(_this.paths.routes, utils.route404());
+          fs.writeFile(utils.paths.routes, data);
+          fs.appendFile(utils.paths.routes, utils.routeTemplate(_this.name, _this.route));
+          return fs.appendFile(utils.paths.routes, utils.route404());
         };
       })(this));
     };
