@@ -1,6 +1,8 @@
 #home.page
 
-	h1 {{ data.title }}
+	//- Using ng-bind instead of the brackets approach will improve performance and
+	//- prevents the brackets from being seen on page loads
+	h1( ng-bind="data.title" )
 
 	.images( ng-show="imagesLoaded" )
 

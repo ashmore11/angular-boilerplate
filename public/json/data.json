@@ -2,33 +2,41 @@
 	"partials": {
 		"HEADER": {
 			"title": "Header",
-			"strings": {
-				"header_desc": "I am the header"
+			"copy": {
+				"description": "Header..."
 			}
 		},
 		"FOOTER": {
 			"title": "Footer",
-			"strings": {
-				"footer_desc": "I am the footer"
+			"copy": {
+				"description": "Footer..."
 			}
 		}
 	},
 	"pages": {
 		"HOME": {
+			"meta": {
+				"title": "Angular Boilerplate - Home Page",
+				"ogTitle": "Angular Boilerplate - Home Page"
+			},
 			"title": "Home page",
-			"strings": {
-				"home_desc": "I am the home page..."
+			"copy": {
+				"description": "Home page..."
 			},
 			"assets": [
-				{ "type": "image", "src": "images/placeholder_01.png" },
-				{ "type": "image", "src": "images/placeholder_02.png" },
-				{ "type": "image", "src": "images/placeholder_03.png" }
+				{ "type": "image", "src": "images/placeholder.png" },
+				{ "type": "image", "src": "images/placeholder.png" },
+				{ "type": "image", "src": "images/placeholder.png" }
 			]
 		},
-		"EXAMPLE_PAGE": {
+		"EXAMPLE": {
+			"meta": {
+				"title": "Angular Boilerplate - Example Page",
+				"ogTitle": "Angular Boilerplate - Example Page"
+			},
 			"title": "Example page",
-			"strings": {
-				"example_desc": "I am the example page..."
+			"copy": {
+				"description": "Example page..."
 			}
 		}
 	}
