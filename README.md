@@ -2,20 +2,22 @@
 
 Super simple Angular app using coffeescript, jade and stylus. Also has a easy to use CLI for generating new views. Everything is compiled using Gulp.
 
-### CSS
-I've added Jeet and Rupture to make media queries and grids much easier. you dont have to use these but I would highly recommend it.
-
-For more info visit: 
-  1. [Rupture](https://github.com/jenius/rupture)
-  2. [Jeet](http://jeet.gs/)
-
 All dependencies and vendors gathered using bower and then compiled into a single vendor.js file. If you require more vendors just run `bower install [vendor you want] --save` and then run `make watch` again.
 
 The CLI is still very much a work in progress but so far can be used to simultaneously generate a new controller, template and route with some boilerplate. The idea was to save time rather than waste it creating all the files manually.
 
+#### ngClassify
+
 This app skeleton heavily relies on ngClassify and you will need to understand how that works in order to use this project. Its actually very simple and should only take a few minutes to start understanding the basics. It really makes the app super clean an organised.
 
-`https://github.com/CaryLandholt/ng-classify`
+[ngClassify](https://github.com/CaryLandholt/ng-classify)
+
+#### css
+I've added Jeet and Rupture to make media queries and grids much easier. you dont have to use these but I would highly recommend it.
+
+For more info visit: 
+  * [Rupture](https://github.com/jenius/rupture)
+  * [Jeet](http://jeet.gs/)
 
 ## Getting Setup
 
