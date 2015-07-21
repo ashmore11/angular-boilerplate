@@ -11,21 +11,21 @@ The CLI is still very much a work in progress but so far can be used to simultan
 This app skeleton heavily relies on CoffeeScript and ngClassify. You will need to understand how both work in order to use this project. ngClassify is actually very simple and should only take a few minutes to start understanding the basics. It really makes the app super clean an organised.
 
 For more info visit:
-	* [ngClassify](https://github.com/CaryLandholt/ng-classify)
+  * [ngClassify](https://github.com/CaryLandholt/ng-classify)
 
 #### css
 Along with Stylus I've added Jeet and Rupture to make media queries and grids much easier. you dont have to use these but I would highly recommend it.
 
 For more info visit:
-	* [Stylus](https://learnboost.github.io/stylus/)
+  * [Stylus](https://learnboost.github.io/stylus/)
   * [Rupture](https://github.com/jenius/rupture)
   * [Jeet](http://jeet.gs/)
 
 ##### Other Vendors
 I've included some other libraries that I think are very useful
-	* [GSAP](http://greensock.com/gsap)
-	* [jQuery](http://jquery.com/)
-	* [lodash](https://lodash.com/)
+  * [GSAP](http://greensock.com/gsap)
+  * [jQuery](http://jquery.com/)
+  * [lodash](https://lodash.com/)
 
 ## Getting Setup
 
@@ -62,12 +62,12 @@ make release
 ```
 
 List of Dependencies
-	* [Angular](http://angularjs.org/)
-	* [CoffeeScript](http://coffeescript.org/)
-	* [ngClassify](https://github.com/CaryLandholt/ng-classify)
-	* [Stylus](https://learnboost.github.io/stylus/)
+  * [Angular](http://angularjs.org/)
+  * [CoffeeScript](http://coffeescript.org/)
+  * [ngClassify](https://github.com/CaryLandholt/ng-classify)
+  * [Stylus](https://learnboost.github.io/stylus/)
   * [Rupture](https://github.com/jenius/rupture)
   * [Jeet](http://jeet.gs/)
   * [GSAP](http://greensock.com/gsap)
-	* [jQuery](http://jquery.com/)
-	* [lodash](https://lodash.com/)
+  * [jQuery](http://jquery.com/)
+  * [lodash](https://lodash.com/)
