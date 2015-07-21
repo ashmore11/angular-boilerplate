@@ -1,8 +1,17 @@
 class Run extends Run
 
-	constructor: ( $rootScope, HTTP ) ->
+	constructor: ( $rootScope ) ->
 
-		$rootScope.$on "$routeChangeSuccess", ( event, next, current ) ->
+		defaults =
+			title         : 'Page Needs Title!'
+			ogTitle       : ''
+			ogUrl         : ''
+			ogType        : ''
+			ogImage       : ''
+			ogDescription : ''
+			ogSiteName    : 'site name'
+
+		$rootScope.$on '$routeChangeSuccess', ( event, next, current ) ->
 
 			setTitle = setInterval ->
 
@@ -10,17 +19,11 @@ class Run extends Run
 
 					if next.scope.data?.meta
 
-						meta = next.scope.data.meta
-
-						$rootScope.meta =
-							pageTitle : meta.title
-							ogTitle   : meta.ogTitle
+						$rootScope.meta = next.scope.data.meta
 
 					else
 
-						$rootScope.meta =
-							pageTitle : 'Page Needs Title!'
-							ogTitle   : 'Page Needs Title!'
+						$rootScope.meta = defaults
 
 					clearInterval setTitle
 

@@ -6,8 +6,9 @@ class App extends App
 		angular.element( document ).ready () => do @start
 
 		return [ 
-			'ngRoute',
 			'ngAnimate',
+			'ngAria',
+			'ngRoute',
 			'ngSanitize'
 		]
 

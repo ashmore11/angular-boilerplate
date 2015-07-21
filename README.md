@@ -2,32 +2,43 @@
 
 Super simple Angular app using coffeescript, jade and stylus. Also has a easy to use CLI for generating new views. Everything is compiled using Gulp.
 
-Also using Jeet and Rupture to make media queries and grids easier.
+Also using Jeet and Rupture to make media queries and grids much easier.
 
-## Setup
+All dependencies and vendors gathered using bower and then compiled into a single vendor.js file.
+
+CLI is still very much a work in progress but so far can be used to simultaneously generate a new controller, template and route with some boilerplate. The idea was to save time rather than waste it creating all the files manually.
+
+## Getting Setup
+
+Just run the following from your command line
 
 ```
 make setup
-```
-
-## Development
-
-```
 make watch
 ```
 
-## Release
-
-```
-make release
-```
+When gulp is up and running, open `http://localhost:3000` in your browser. You should now be able to start working on your app and Browser Sync will automatically inject css changes and reload your browser when editing your coffee and jade files.
 
 ## Using the CLI
 
-To generate or delete a view just call 'ngapp gen-view', 'ngapp del-view' from your command line passing a name for the view and a name for the route of your new view
+Initial setup
 
 ```
-ngapp gen-view [view name] [route name]
+make cli_compile
+```
 
-ngapp del-view [view name] [route name]
+To generate or delete a view just run the following from your command line
+
+```
+app mk-view [view name] [route name]
+
+app rm-view [view name] [route name]
+```
+
+## Ready for Production?
+
+Just run the following from your command line
+
+```
+make release
 ```
