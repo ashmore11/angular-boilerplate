@@ -6,8 +6,8 @@ Super simple Angular app using coffeescript, jade and stylus. Also has a easy to
 I've added Jeet and Rupture to make media queries and grids much easier. you dont have to use these but I would highly recommend it.
 
 For more info visit: 
-[Rupture](https://github.com/jenius/rupture)
-[Jeet](http://jeet.gs/)
+1. [Rupture](https://github.com/jenius/rupture)
+2. [Jeet](http://jeet.gs/)
 
 All dependencies and vendors gathered using bower and then compiled into a single vendor.js file. If you require more vendors just run `bower install [vendor you want] --save` and then run `make watch` again.
 
