@@ -1,0 +1,31 @@
+$one = -4px -4px 100px 75px
+$two = -4px -87px 100px 75px
+
+sprite-width($sprite)
+  width $sprite[2]
+
+sprite-height($sprite)
+  height $sprite[3]
+
+sprite-position($sprite)
+  background-position $sprite[0]  $sprite[1]
+
+sprite($sprite)
+  sprite-position($sprite)
+  background-repeat no-repeat
+  overflow hidden
+  display inline-block
+  sprite-width($sprite)
+  sprite-height($sprite)
+
+.icon
+  background-image url('../images/sprite/sprite.png')
+
+.icon-one
+  @extend .icon
+  sprite($one)
+
+.icon-two
+  @extend .icon
+  sprite($two)
+

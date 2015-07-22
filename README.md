@@ -24,6 +24,15 @@ For more info visit:
 
 ---
 
+##### Generating Spritesheets
+
+If you would like to create a spritesheet from a set of images, just add images to the `src/assets` directory and run `gulp sprites`. All images must be png format. A stylus file and corresponding sprite.png will be generated for you. To display any icon just write out `.icon-[image name]` in any of your jade templates.
+
+For more info visit:
+  * [Sprity](https://github.com/aslansky/css-sprite)
+
+---
+
 ##### Other Vendors
 I've included some other libraries that I think are very useful
   * [GSAP](http://greensock.com/gsap)

@@ -5,6 +5,7 @@ paths =
 	scripts   : require('./scripts').paths
 	templates : require('./templates').paths
 	styles    : require('./styles').paths
+	sprites   : require('./sprites').paths
 
 gulp.task 'watch', ->
 
