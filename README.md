@@ -52,6 +52,8 @@ To generate or delete a view just run the following from your command line
 Just run the following from your command line
   * `make release`
 
+## Thanks
+
 Many thanks to all the following:
   * [Gulp](http://gulpjs.com/)
   * [Angular](http://angularjs.org/)
