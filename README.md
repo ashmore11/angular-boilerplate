@@ -1,13 +1,13 @@
 # Angular Boilerplate
 
-Super simple Angular app using coffeescript, jade and stylus. Also has a easy to use cli for generating new views. Everything is compiled using Gulp.
+Super simple Angular app using CoffeeScript, Jade and Stylus. Also has a easy to use cli for generating and deleting views. Everything is compiled using Gulp. BrowserSync will automatically inject css changes and reload your browser when editing your coffee and jade files
 
-All dependencies and vendors gathered using bower and then compiled into a single vendor.js file. If you require more vendors just run `bower install [library you want] --save`, then run `gulp vendor` from the command line and refresh your browser.
+All dependencies and libraries gathered using bower and then compiled into a single vendor.js file. If you require more dependencies or libraries, just run `bower install [library you want] --save`, then run `gulp vendor` from the command line and refresh your browser.
 
 ---
 
 #### ngClassify
-This app skeleton heavily relies on CoffeeScript and ngClassify. You will need to understand how both work in order to use this project. ngClassify is actually very simple and should only take a few minutes to start understanding the basics. It really makes the app super clean an organised.
+This app skeleton heavily relies on ngClassify. You will need to understand how it works in order to use this project. It is actually very simple and should only take a few minutes to start understanding the basics. It really makes the app super clean an organised.
 
 For more info visit:
   * [ngClassify](https://github.com/CaryLandholt/ng-classify)
@@ -15,7 +15,7 @@ For more info visit:
 ---
 
 #### css
-Along with Stylus I've added Jeet and Rupture to make media queries and grids much easier. you dont have to use these but I would highly recommend it.
+Along with Stylus I've added Jeet and Rupture to make media queries and grids much easier. You dont have to use these but I would highly recommend it.
 
 For more info visit:
   * [Stylus](https://learnboost.github.io/stylus/)
@@ -38,7 +38,7 @@ Just run the following from your command line
   * `make setup`
   * `make watch`
 
-When gulp is up and running, open `http://localhost:3000` in your browser. You should now be able to start working on your app and Browser Sync will automatically inject css changes and reload your browser when editing your coffee and jade files.
+When gulp is up and running, open `http://localhost:3000` in your browser. You should now be able to start working on your app and see updates in your browser automatically thnaks to BroserSync.
 
 ## Using the cli
 
@@ -63,6 +63,7 @@ Just run the following from your command line
 
 Many thanks to all the following for making life so much easier!
   * [Gulp](http://gulpjs.com/)
+  * [BrowserSync](http://www.browsersync.io/)
   * [Angular](http://angularjs.org/)
   * [CoffeeScript](http://coffeescript.org/)
   * [ngClassify](https://github.com/CaryLandholt/ng-classify)
