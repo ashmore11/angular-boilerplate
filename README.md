@@ -72,9 +72,9 @@ Just run the following from your command line
 
 If you would like to contribute, please do the following:
 
-  1. Fork the plugin repository.
-  2. Hack on a separate topic branch created from the latest master.
-  3. Commit and push the topic branch.
+  1. Fork the repository.
+  2. Create a separate branch using the latest master.
+  3. Commit and push your changes to the branch.
   4. Make a pull request.
 
 ---
