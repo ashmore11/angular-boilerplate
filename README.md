@@ -32,12 +32,13 @@ Just run the following from your command line
   * `make setup`
   * `make watch`
 
-
 When gulp is up and running, open `http://localhost:3000` in your browser. You should now be able to start working on your app and Browser Sync will automatically inject css changes and reload your browser when editing your coffee and jade files.
 
 ## Using the cli
 
 The cli is still very much a work in progress but so far can be used to simultaneously generate a new controller, template and route with some boilerplate. The idea was to save time rather than waste it creating all the files manually.
+
+---
 
 Initial setup
   * `npm install -g shelljs`
@@ -47,14 +48,16 @@ To generate or delete a view just run the following from your command line
   * `app mk-view [view name] [route name]`
   * `app rm-view [view name] [route name]`
 
+---
+
 ## Ready for Production?
 
 Just run the following from your command line
   * `make release`
 
-## Thanks
+---
 
-Many thanks to all the following:
+Many thanks to all the following for making life so much easier!
   * [Gulp](http://gulpjs.com/)
   * [Angular](http://angularjs.org/)
   * [CoffeeScript](http://coffeescript.org/)
