@@ -60,8 +60,7 @@ class Utils
 	stylusApp: ( name ) ->
 
 		data = "
-		\r\n
-		@import 'views/#{name}'
+		\r\n@import 'views/#{name}'
 		"
 
 		return data

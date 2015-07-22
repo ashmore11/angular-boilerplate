@@ -70,6 +70,17 @@ Just run the following from your command line
 
 ---
 
+## Contributing
+
+If you would like to contribute, please do the following:
+
+  1. Fork the plugin repository.
+  2. Hack on a separate topic branch created from the latest master.
+  3. Commit and push the topic branch.
+  4. Make a pull request.
+
+---
+
 Many thanks to all the following for making life so much easier!
   * [Gulp](http://gulpjs.com/)
   * [BrowserSync](http://www.browsersync.io/)

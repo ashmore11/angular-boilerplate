@@ -53,7 +53,7 @@
 
     Utils.prototype.stylusApp = function(name) {
       var data;
-      data = "\r\n @import 'views/" + name + "'";
+      data = "\r\n@import 'views/" + name + "'";
       return data;
     };
 
