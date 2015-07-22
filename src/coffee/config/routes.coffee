@@ -9,9 +9,9 @@ class Routes extends Config
 			.when '/',
 				templateUrl : 'templates/views/home.html'
 				controller  : 'homeController'
- 
-			.when '/example-page', 
-				templateUrl : 'templates/views/examplepage.html' 
+
+			.when '/example-page',
+				templateUrl : 'templates/views/examplepage.html'
 				controller  : 'examplepageController'
  
 			.otherwise 

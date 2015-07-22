@@ -43,11 +43,17 @@
           }
         };
       })(this));
-      return fs.unlink(utils.paths.html + (this.name + ".html"), (function(_this) {
+      fs.unlink(utils.paths.html + (this.name + ".html"), (function(_this) {
         return function(err) {
           if (err) {
             return _this.errorMessage(err);
           }
+        };
+      })(this));
+      return fs.readFile(utils.paths.stylusApp, (function(_this) {
+        return function(err, data) {
+          data = data.toString().replace(utils.stylusApp(_this.name), '');
+          return fs.writeFile(utils.paths.stylusApp, data);
         };
       })(this));
     };

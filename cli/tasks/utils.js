@@ -14,7 +14,8 @@
       service: 'src/coffee/services/',
       jade: 'src/jade/views/',
       stylus: 'src/stylus/views/',
-      routes: 'src/coffee/routes/routes.coffee',
+      stylusApp: 'src/stylus/app.styl',
+      routes: 'src/coffee/config/routes.coffee',
       html: 'public/templates/views/'
     };
 
@@ -47,6 +48,12 @@
     Utils.prototype.stylusData = function(name) {
       var data;
       data = "#" + name + " \r\n	//";
+      return data;
+    };
+
+    Utils.prototype.stylusApp = function(name) {
+      var data;
+      data = "\r\n @import 'views/" + name + "'";
       return data;
     };
 

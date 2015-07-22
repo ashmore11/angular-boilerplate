@@ -35,7 +35,12 @@
         };
       })(this));
       fs.writeFile(utils.paths.jade + (this.name + ".jade"), utils.jadeData(this.name));
-      return fs.writeFile(utils.paths.stylus + (this.name + ".styl"), utils.stylusData(this.name));
+      fs.writeFile(utils.paths.stylus + (this.name + ".styl"), utils.stylusData(this.name));
+      return fs.readFile(utils.paths.stylusApp, (function(_this) {
+        return function(err, data) {
+          return fs.appendFile(utils.paths.stylusApp, utils.stylusApp(_this.name));
+        };
+      })(this));
     };
 
     MkView.prototype.generateRoute = function() {

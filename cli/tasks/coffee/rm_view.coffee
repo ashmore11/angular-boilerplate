@@ -26,6 +26,14 @@ module.exports = class RmView
 		fs.unlink utils.paths.stylus     + "#{@name}.styl",   ( err ) => @errorMessage( err ) if err
 		fs.unlink utils.paths.html       + "#{@name}.html",   ( err ) => @errorMessage( err ) if err
 
+		# Read the data from the app.styl file
+		fs.readFile utils.paths.stylusApp, ( err, data ) =>
+
+			# Get the @import for the given view
+			data = data.toString().replace utils.stylusApp( @name ), ''
+			
+			fs.writeFile utils.paths.stylusApp, data
+
 	deleteRoute: ->
 
 		# Read the data from the routes.coffee file

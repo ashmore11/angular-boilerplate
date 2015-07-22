@@ -39,6 +39,11 @@ module.exports = class MkView
 		# Generate Stylus from data below
 		fs.writeFile utils.paths.stylus + "#{@name}.styl", utils.stylusData( @name )
 
+		# Generate controller from template
+		fs.readFile utils.paths.stylusApp, ( err, data ) =>
+
+			fs.appendFile utils.paths.stylusApp, utils.stylusApp( @name )
+
 	generateRoute: ->
 
 		# Read the data from the routes.coffee file

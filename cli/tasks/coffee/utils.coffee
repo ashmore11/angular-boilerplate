@@ -6,7 +6,8 @@ class Utils
 		service    : 'src/coffee/services/'
 		jade       : 'src/jade/views/'
 		stylus     : 'src/stylus/views/'
-		routes     : 'src/coffee/routes/routes.coffee'
+		stylusApp  : 'src/stylus/app.styl'
+		routes     : 'src/coffee/config/routes.coffee'
 		html       : 'public/templates/views/'
 
 	generateTemplate: ( name, data ) =>
@@ -52,6 +53,15 @@ class Utils
 
 		data = "##{name}
 		\r\n	//
+		"
+
+		return data
+
+	stylusApp: ( name ) ->
+
+		data = "
+		\r\n
+		@import 'views/#{name}'
 		"
 
 		return data
