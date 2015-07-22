@@ -4,7 +4,7 @@ Super simple Angular app using CoffeeScript, Jade and Stylus. Also has a easy to
 
 All dependencies and libraries gathered using bower and then compiled into a single vendor.js file. If you require more dependencies or libraries, just run `bower install [library you want] --save`, then run `gulp vendor` from the command line and refresh your browser.
 
----
+## Prerequisites
 
 #### ngClassify
 This app skeleton heavily relies on ngClassify. You will need to understand how it works in order to use this project. It is actually very simple and should only take a few minutes to start understanding the basics. It really makes the app super clean an organised.
