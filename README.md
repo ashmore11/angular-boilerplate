@@ -27,11 +27,9 @@ I've included some other libraries that I think are very useful
 ## Getting Setup
 
 Just run the following from your command line
+  * `make setup`
+  * `make watch`
 
-```
-make setup
-make watch
-```
 
 When gulp is up and running, open `http://localhost:3000` in your browser. You should now be able to start working on your app and Browser Sync will automatically inject css changes and reload your browser when editing your coffee and jade files.
 
@@ -62,6 +60,7 @@ make release
 ```
 
 Many thanks to all the following:
+  * [Gulp](http://gulpjs.com/)
   * [Angular](http://angularjs.org/)
   * [CoffeeScript](http://coffeescript.org/)
   * [ngClassify](https://github.com/CaryLandholt/ng-classify)
