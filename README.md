@@ -68,8 +68,6 @@ To generate or delete a view just run the following from your command line
 Just run the following from your command line
   * `make release`
 
----
-
 ## Contributing
 
 If you would like to contribute, please do the following:
