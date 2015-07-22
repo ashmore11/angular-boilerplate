@@ -4,6 +4,8 @@ Super simple Angular app using coffeescript, jade and stylus. Also has a easy to
 
 All dependencies and vendors gathered using bower and then compiled into a single vendor.js file. If you require more vendors just run `bower install [vendor you want] --save` and then run `make watch` again from the command line.
 
+---
+
 #### ngClassify
 This app skeleton heavily relies on CoffeeScript and ngClassify. You will need to understand how both work in order to use this project. ngClassify is actually very simple and should only take a few minutes to start understanding the basics. It really makes the app super clean an organised.
 
