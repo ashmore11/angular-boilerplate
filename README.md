@@ -2,7 +2,7 @@
 
 Super simple Angular app using coffeescript, jade and stylus. Also has a easy to use cli for generating new views. Everything is compiled using Gulp.
 
-All dependencies and vendors gathered using bower and then compiled into a single vendor.js file. If you require more vendors just run `bower install [vendor you want] --save` and then run `make watch` again from the command line.
+All dependencies and vendors gathered using bower and then compiled into a single vendor.js file. If you require more vendors just run `bower install [library you want] --save`, then run `gulp vendor` from the command line and refresh your browser.
 
 ---
 
