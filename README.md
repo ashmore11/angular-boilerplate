@@ -82,3 +82,4 @@ Many thanks to all the following for making life so much easier!
   * [GSAP](http://greensock.com/gsap)
   * [jQuery](http://jquery.com/)
   * [lodash](https://lodash.com/)
+  * [Sprity](https://github.com/aslansky/css-sprite)
