@@ -1,6 +1,6 @@
 # Angular Boilerplate
 
-Super simple Angular app using CoffeeScript, Jade and Stylus. Also has a easy to use cli for generating and deleting views. Everything is compiled using Gulp. BrowserSync will automatically inject css changes and reload your browser when editing your coffee and jade files
+Super simple Angular app using CoffeeScript, Jade and Stylus. Also has a easy to use cli for generating and deleting views. Everything is compiled using Gulp. BrowserSync will automatically inject css changes and reload your browser when editing your coffee and jade files.
 
 All dependencies and libraries gathered using bower and then compiled into a single vendor.js file. If you require more dependencies or libraries, just run `bower install [library you want] --save`, then run `gulp vendor` from the command line and refresh your browser.
 

@@ -11,3 +11,6 @@ release:
 cli_compile:
 	shjs cli/build.coffee
 	cd cli && sudo npm install -g
+
+open_localhost:
+	open "http://localhost:3000"
