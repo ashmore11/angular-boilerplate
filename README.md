@@ -10,6 +10,8 @@ This app skeleton heavily relies on CoffeeScript and ngClassify. You will need t
 For more info visit:
   * [ngClassify](https://github.com/CaryLandholt/ng-classify)
 
+---
+
 #### css
 Along with Stylus I've added Jeet and Rupture to make media queries and grids much easier. you dont have to use these but I would highly recommend it.
 
@@ -17,6 +19,8 @@ For more info visit:
   * [Stylus](https://learnboost.github.io/stylus/)
   * [Rupture](https://github.com/jenius/rupture)
   * [Jeet](http://jeet.gs/)
+
+---
 
 ##### Other Vendors
 I've included some other libraries that I think are very useful
@@ -37,8 +41,6 @@ When gulp is up and running, open `http://localhost:3000` in your browser. You s
 ## Using the cli
 
 The cli is still very much a work in progress but so far can be used to simultaneously generate a new controller, template and route with some boilerplate. The idea was to save time rather than waste it creating all the files manually.
-
----
 
 Initial setup
   * `npm install -g shelljs`
