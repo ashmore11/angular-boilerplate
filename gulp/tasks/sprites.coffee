@@ -10,7 +10,7 @@ exports.paths =
 	watch        : 'src/assets/*.png'
 	cssPath      : '../images/sprite/'
 	destinations : [ './public/images/sprite', './src/stylus/utils' ]
-	template     : './gulp/tasks/stylus.mustache'
+	template     : './gulp/util/stylus.mustache'
 	filename     : 'sprite.styl'
 
 gulp.task 'sprites', ->
