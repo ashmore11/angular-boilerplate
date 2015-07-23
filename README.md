@@ -53,11 +53,17 @@ When gulp is up and running, run `make open_localhost` to open the app in your d
 
 ## Using the cli
 
-The cli is still very much a work in progress but so far can be used to simultaneously generate a new controller, template and route with some boilerplate. The idea was to save time rather than waste it creating all the files manually.
+The cli is still very much a work in progress but so far can be used to simultaneously generate a new controller, template and route with some boilerplate. The idea was to save time rather than waste it creating all the files manually. Feel free to add anything you think would be helpful and let me know if you do.
+
+For more info visit:
+  * [Commander](https://github.com/tj/commander.js)
+  * [Shelljs](https://github.com/arturadib/shelljs)
 
 Initial setup
-  * `npm install -g shelljs`
-  * `make cli`
+```
+$ npm install -g shelljs
+$ make cli
+```
 
 To generate or delete a view just run the following from your command line
 ```
@@ -100,3 +106,5 @@ Many thanks to all the following for making life so much easier!
   * [jQuery](http://jquery.com/)
   * [lodash](https://lodash.com/)
   * [Sprity](https://github.com/aslansky/css-sprite)
+  * [Shelljs](https://github.com/arturadib/shelljs)
+  * [Commander](https://github.com/tj/commander.js)
