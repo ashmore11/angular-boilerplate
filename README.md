@@ -43,7 +43,7 @@ I've included some other libraries that I think are very useful
 
 Just run the following from your command line
 ```
-$ git clone git@github.com:ashmore11/angular-boilerplate.git` into your preferred directory
+$ git clone git@github.com:ashmore11/angular-boilerplate.git`
 $ cd angular-boilerplate
 $ make setup
 $ make watch
