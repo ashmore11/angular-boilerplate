@@ -49,7 +49,7 @@ $ make setup
 $ make watch
 ```
 
-When gulp is up and running, open `http://localhost:3000` in your browser. You should now be able to start working on your app and see updates in your browser automatically thnaks to BroserSync.
+When gulp is up and running, run `make open_localhost` to open the app in your default browser. If you are using Sublime Text 2 you can run `make open_sublime` and it will open the app in sublime for you. Just open the makefile to change this command to your editor of choice. You should now be able to start working on your app and see updates in your browser automatically thanks to BroserSync.
 
 ## Using the cli
 
@@ -57,7 +57,7 @@ The cli is still very much a work in progress but so far can be used to simultan
 
 Initial setup
   * `npm install -g shelljs`
-  * `make cli_compile`
+  * `make cli`
 
 To generate or delete a view just run the following from your command line
 ```
