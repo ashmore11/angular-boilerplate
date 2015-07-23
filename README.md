@@ -58,15 +58,15 @@ Initial setup
   * `make cli_compile`
 
 To generate or delete a view just run the following from your command line
-  * `app mk-view [view name] [route name]`
-  * `app rm-view [view name] [route name]`
+```app mk-view [view name] [route name]```
+```app rm-view [view name] [route name]```
 
 ---
 
 ## Ready for Production?
 
 Just run the following from your command line
-  * `make release`
+```make release```
 
 ## Contributing
 
