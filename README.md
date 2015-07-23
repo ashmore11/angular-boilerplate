@@ -2,7 +2,7 @@
 
 Super simple Angular app using CoffeeScript, Jade and Stylus. Also has a easy to use cli for generating and deleting views. Everything is compiled using Gulp. BrowserSync will automatically inject css changes and reload your browser when editing your coffee and jade files.
 
-All dependencies and libraries gathered using bower and then compiled into a single vendor.js file. If you require more dependencies or libraries, just run `bower install [library you want] --save`, then run `gulp vendor` from the command line and refresh your browser.
+All dependencies and libraries gathered using bower and then compiled into a single vendor.js file. If you require more dependencies or libraries, just run `$ bower install [library you want] --save`, then run `$ gulp vendor` from the command line and refresh your browser.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ For more info visit:
 
 ##### Generating Spritesheets
 
-If you would like to create a spritesheet from a set of images, just add images to the `src/assets` directory and run `gulp sprites` from your command line. All images must be png format. A stylus file and corresponding sprite.png will be generated for you. To display an icon just write out `.icon-[image name]` in any of your jade templates.
+If you would like to create a spritesheet from a set of images, just add images to the `src/assets` directory and run `$ gulp sprites` from your command line. All images must be png format. A stylus file and corresponding sprite.png will be generated for you. To display an icon just write out `.icon-[image name]` in any of your jade templates.
 
 For more info visit:
   * [Sprity](https://github.com/aslansky/css-sprite)
@@ -49,7 +49,7 @@ $ make setup
 $ make watch
 ```
 
-When gulp is up and running, run `make open_localhost` to open the app in your default browser. If you are using Sublime Text 2 you can run `make open_sublime` and it will open the app in sublime for you. Just open the makefile to change this command to your editor of choice. You should now be able to start working on your app and see updates in your browser automatically thanks to BroserSync.
+When gulp is up and running, run `$ make open_localhost` to open the app in your default browser. If you are using Sublime Text 2 you can run `$ make open_sublime` and it will open the app in Sublime for you. Just open the makefile to change this command to your editor of choice. You should now be able to start working on your app and see updates in your browser automatically thanks to BroserSync.
 
 ## Using the cli
 
@@ -67,10 +67,10 @@ $ make cli
 
 To generate or delete a view just run the following from your command line
 ```
-app mk-view [view name] [route name]
+$ app mk-view [view name] [route name]
 ```
 ```
-app rm-view [view name] [route name]
+$ app rm-view [view name] [route name]
 ```
 
 ---
@@ -79,7 +79,7 @@ app rm-view [view name] [route name]
 
 Just run the following from your command line
 ```
-make release
+$ make release
 ```
 
 ## Contributing
