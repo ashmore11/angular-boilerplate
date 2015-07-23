@@ -51,7 +51,7 @@ $ make setup
 $ make watch
 ```
 
-When gulp is up and running, run `$ make open_localhost` to open the app in your default browser. If you are using Sublime Text 2 you can run `$ make open_sublime` and it will open the app in Sublime for you. Just open the makefile to change this command to your editor of choice. You should now be able to start working on your app and see updates in your browser automatically thanks to BroserSync.
+When gulp is up and running, run `$ make open_localhost` to open the app in your default browser. If you are using Sublime Text 2 you can run `$ make open_sublime` and it will open the app in Sublime for you. Just open the makefile to change this command to your editor of choice. You should now be able to start working on your app and see updates in your browser automatically thanks to BrowserSync.
 
 ## Using the cli
 
