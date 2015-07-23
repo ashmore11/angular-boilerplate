@@ -43,13 +43,13 @@ I've included some other libraries that I think are very useful
 
 Just run the following from your command line
 ```
-git clone git@github.com:ashmore11/angular-boilerplate.git` into your preferred directory
+$ git clone git@github.com:ashmore11/angular-boilerplate.git` into your preferred directory
 
-cd angular-boilerplate
+$ cd angular-boilerplate
 
-make setup
+$ make setup
 
-make watch
+$ make watch
 ```
 
 When gulp is up and running, open `http://localhost:3000` in your browser. You should now be able to start working on your app and see updates in your browser automatically thnaks to BroserSync.
